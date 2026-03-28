@@ -4,6 +4,11 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
 <title>Lombar IA — Fim da Dor nas Costas</title>
+<!-- SEO / Social -->
+<meta name="description" content="Nossa IA cria um plano de exercícios personalizado para sua dor lombar e monitora sua evolução dia a dia. Sem academia. Sem equipamentos."/>
+<meta property="og:title" content="Lombar IA — Elimine a dor lombar em 30 dias"/>
+<meta property="og:description" content="IA que cria treino personalizado para sua dor lombar. 87% sentem melhora em 3 semanas."/>
+<meta property="og:url" content="https://lombar.vercel.app/lombar-landing.html"/>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -62,9 +67,6 @@ section { padding: 56px 20px; }
 .star { color: #f59e0b; font-size: 18px; }
 .stars { display:flex; gap:2px; }
 
-/* PAIN CARD */
-.pain-number { font-family:'Outfit',sans-serif; font-weight:900; font-size:40px; color:var(--blue); line-height:1; font-synthesis:none; }
-
 /* PROGRESS */
 .progress { height:8px; background:#e5e7eb; border-radius:999px; overflow:hidden; margin-top:6px; }
 .progress-fill { height:100%; border-radius:999px; background:linear-gradient(90deg,#1d4ed8,#0891b2); }
@@ -72,9 +74,6 @@ section { padding: 56px 20px; }
 /* PRICING */
 .price-card { background: linear-gradient(135deg, #1d4ed8, #0891b2); border-radius: 20px; padding: 32px 24px; text-align: center; position: relative; overflow: hidden; }
 .price-card::before { content:''; position:absolute; top:-40px; right:-40px; width:160px; height:160px; background:rgba(255,255,255,0.08); border-radius:50%; }
-
-/* TIMER */
-.tbox { background:rgba(255,255,255,0.15); border-radius:10px; padding:10px 14px; min-width:56px; text-align:center; backdrop-filter:blur(4px); }
 
 /* FAQ */
 .faq-item { border-bottom:1px solid var(--border); cursor:pointer; }
@@ -101,16 +100,7 @@ section { padding: 56px 20px; }
 /* FEATURE ICON */
 .fi { width:48px;height:48px;min-width:48px;background:var(--blue-dim);border:1px solid var(--blue-border);border-radius:14px;display:flex;align-items:center;justify-content:center; }
 
-/* AVATAR INITIALS */
-.avatar { width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Outfit',sans-serif;font-weight:800;font-size:18px;color:#fff;font-synthesis:none; }
-
-/* PROGRESS CHART */
-.week-bar { display:flex;flex-direction:column;align-items:center;gap:6px;flex:1; }
-.week-bar-fill { width:100%;border-radius:6px 6px 0 0;transition:height 1s ease; }
-.week-label { font-size:11px;color:var(--muted);font-weight:600; }
-.week-value { font-size:12px;font-weight:700;color:var(--blue);font-family:'Outfit',sans-serif;font-synthesis:none; }
-
-/* FISIO COMPARE */
+/* COMPARE */
 .compare-row { display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-radius:10px;font-size:14px; }
 
 /* EMAIL INPUT */
@@ -120,9 +110,33 @@ section { padding: 56px 20px; }
 
 /* PAYMENT ICONS */
 .pay-icon { display:inline-flex;align-items:center;justify-content:center;background:#f9fafb;border:1px solid var(--border);border-radius:8px;padding:5px 10px;height:32px; }
+
+/* EXIT INTENT OVERLAY */
+#exitOverlay { display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.55); backdrop-filter:blur(4px); align-items:center; justify-content:center; padding:20px; }
+#exitOverlay.active { display:flex; }
+#exitModal { background:#fff; border-radius:20px; padding:28px 22px; max-width:380px; width:100%; text-align:center; box-shadow:0 24px 64px rgba(0,0,0,0.2); animation:fu 0.35s ease both; }
 </style>
 </head>
 <body>
+
+<!-- ===== EXIT INTENT OVERLAY ===== -->
+<div id="exitOverlay">
+  <div id="exitModal">
+    <p style="font-size:32px;margin-bottom:10px;">💬</p>
+    <h3 class="fd" style="font-size:20px;font-weight:900;color:var(--text);margin-bottom:8px;line-height:1.2;">Ficou com alguma dúvida?</h3>
+    <p style="font-size:15px;color:var(--muted);margin-bottom:20px;line-height:1.7;">Muita gente prefere conversar antes de assinar. Nossa equipe está no WhatsApp agora para te ajudar — sem pressão.</p>
+    <!-- WhatsApp — CTA principal para 40-60+ -->
+    <a href="https://wa.me/5500000000000?text=Olá!+Vi+o+Lombar+IA+e+gostaria+de+saber+mais+antes+de+assinar." target="_blank" style="display:inline-flex;align-items:center;justify-content:center;gap:10px;background:#25D366;color:#fff;font-family:Outfit,sans-serif;font-weight:900;font-size:16px;height:54px;border-radius:12px;text-decoration:none;width:100%;margin-bottom:10px;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Falar com especialista no WhatsApp
+    </a>
+    <!-- Downsell como opção secundária -->
+    <a href="lombar-downsell.html" style="display:inline-flex;align-items:center;justify-content:center;background:var(--blue-dim);color:var(--blue);font-family:Outfit,sans-serif;font-weight:700;font-size:14px;height:46px;border-radius:12px;text-decoration:none;width:100%;margin-bottom:12px;border:1px solid var(--blue-border);">
+      Ver oferta especial antes de sair
+    </a>
+    <button onclick="document.getElementById('exitOverlay').classList.remove('active')" style="background:none;border:none;font-size:13px;color:var(--muted2);cursor:pointer;">Fechar</button>
+  </div>
+</div>
 
 <!-- ===== HERO ===== -->
 <section class="hero">
@@ -201,9 +215,7 @@ section { padding: 56px 20px; }
 
     <!-- BAR CHART -->
     <div class="card rv" style="padding:24px 20px 16px;margin-bottom:16px;">
-      <div style="display:flex;align-items:flex-end;gap:8px;height:140px;margin-bottom:8px;" id="painChart">
-        <!-- bars rendered by JS -->
-      </div>
+      <div style="display:flex;align-items:flex-end;gap:8px;height:140px;margin-bottom:8px;" id="painChart"></div>
       <div style="display:flex;justify-content:space-between;padding:0 4px;margin-bottom:16px;">
         <span style="font-size:11px;color:var(--muted);">Semana 1</span>
         <span style="font-size:11px;color:var(--muted);">Semana 2</span>
@@ -258,7 +270,6 @@ section { padding: 56px 20px; }
         <p style="font-size:15px;color:var(--text);line-height:1.5;"><strong>Dor interrompe seu sono</strong> ou te impede de dormir bem</p>
       </div>
     </div>
-
     <div class="card-b rv" style="margin-top:18px;padding:18px;background:var(--blue-dim);">
       <p style="font-size:15px;color:var(--text);font-weight:600;line-height:1.6;">A dor lombar afeta <strong>8 em cada 10 brasileiros</strong> acima dos 40 anos. E a maioria está tratando o sintoma, não a causa.</p>
     </div>
@@ -272,7 +283,6 @@ section { padding: 56px 20px; }
     <h2 class="title rv">Simples. Guiado. Eficaz.</h2>
     <p class="sub rv">Não precisa saber nada de exercício. A IA faz tudo por você.</p>
     <div style="display:flex;flex-direction:column;gap:12px;">
-
       <div class="card rv" style="padding:20px;display:flex;align-items:flex-start;gap:16px;text-align:left;">
         <div class="fi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 12h6M9 16h4"/></svg></div>
         <div>
@@ -281,7 +291,6 @@ section { padding: 56px 20px; }
           <p style="font-size:14px;color:var(--muted);line-height:1.6;">Responde 5 perguntas simples: nível da dor, limitações, rotina. Leva menos de 3 minutos.</p>
         </div>
       </div>
-
       <div class="card rv rv1" style="padding:20px;display:flex;align-items:flex-start;gap:16px;text-align:left;">
         <div class="fi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg></div>
         <div>
@@ -290,7 +299,6 @@ section { padding: 56px 20px; }
           <p style="font-size:14px;color:var(--muted);line-height:1.6;">Em segundos, você recebe exercícios específicos para o seu tipo de dor, com imagens e instruções claras.</p>
         </div>
       </div>
-
       <div class="card rv rv2" style="padding:20px;display:flex;align-items:flex-start;gap:16px;text-align:left;">
         <div class="fi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
         <div>
@@ -300,7 +308,6 @@ section { padding: 56px 20px; }
         </div>
       </div>
     </div>
-
     <div style="margin-top:28px;display:flex;justify-content:center;" class="rv">
       <a href="#pricing" class="btn">Começar agora gratuitamente <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
     </div>
@@ -313,7 +320,6 @@ section { padding: 56px 20px; }
     <h2 class="title rv">Tudo que você precisa para acabar com a dor</h2>
     <p class="sub rv">Desenvolvido especialmente para quem tem mais de 40 anos</p>
     <div style="display:flex;flex-direction:column;gap:10px;">
-
       <div class="card-b rv" style="padding:18px;display:flex;gap:14px;align-items:flex-start;text-align:left;">
         <div style="font-size:28px;flex-shrink:0;line-height:1;margin-top:2px;">🆘</div>
         <div>
@@ -322,7 +328,6 @@ section { padding: 56px 20px; }
           <p style="font-size:13px;color:var(--muted);line-height:1.6;">Está com dor agora? Aperta um botão e recebe 3 exercícios de alívio rápido feitos para o seu perfil.</p>
         </div>
       </div>
-
       <div class="card rv rv1" style="padding:18px;display:flex;gap:14px;align-items:flex-start;text-align:left;">
         <div style="font-size:28px;flex-shrink:0;line-height:1;margin-top:2px;">📋</div>
         <div>
@@ -330,7 +335,6 @@ section { padding: 56px 20px; }
           <p style="font-size:13px;color:var(--muted);line-height:1.6;">Exercícios de baixo impacto pensados para a sua dor, com imagens e instruções simples. Nada genérico.</p>
         </div>
       </div>
-
       <div class="card rv rv2" style="padding:18px;display:flex;gap:14px;align-items:flex-start;text-align:left;">
         <div style="font-size:28px;flex-shrink:0;line-height:1;margin-top:2px;">📈</div>
         <div>
@@ -338,7 +342,6 @@ section { padding: 56px 20px; }
           <p style="font-size:13px;color:var(--muted);line-height:1.6;">Registra sua dor diariamente e acompanha visualmente como ela diminui ao longo das semanas.</p>
         </div>
       </div>
-
       <div class="card rv" style="padding:18px;display:flex;gap:14px;align-items:flex-start;text-align:left;">
         <div style="font-size:28px;flex-shrink:0;line-height:1;margin-top:2px;">🔔</div>
         <div>
@@ -346,7 +349,6 @@ section { padding: 56px 20px; }
           <p style="font-size:13px;color:var(--muted);line-height:1.6;">O app te lembra de fazer seus exercícios no horário certo, sem ser chato. Configura como quiser.</p>
         </div>
       </div>
-
       <div class="card rv rv1" style="padding:18px;display:flex;gap:14px;align-items:flex-start;text-align:left;">
         <div style="font-size:28px;flex-shrink:0;line-height:1;margin-top:2px;">📚</div>
         <div>
@@ -388,7 +390,6 @@ section { padding: 56px 20px; }
         </div>
         <div class="stars" style="margin-bottom:10px;"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
         <p style="font-size:15px;color:#374151;line-height:1.75;">"Tinha dor há 8 anos e já desisti de tentar curar. Em 3 semanas usando o app, a dor baixou de 8 para 3. Hoje consigo trabalhar sentado sem tomar remédio todo dia."</p>
-        <!-- PAIN METER -->
         <div style="margin-top:14px;background:var(--bg);border-radius:10px;padding:12px 14px;">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
             <p style="font-size:12px;color:var(--muted);font-weight:600;">Dor antes</p>
@@ -396,13 +397,9 @@ section { padding: 56px 20px; }
           </div>
           <div style="display:flex;align-items:center;gap:10px;">
             <p class="fd" style="font-size:20px;font-weight:900;color:var(--red);font-synthesis:none;">8/10</p>
-            <div style="flex:1;height:6px;background:#fee2e2;border-radius:999px;overflow:hidden;">
-              <div style="height:100%;width:80%;background:var(--red);border-radius:999px;"></div>
-            </div>
+            <div style="flex:1;height:6px;background:#fee2e2;border-radius:999px;overflow:hidden;"><div style="height:100%;width:80%;background:var(--red);border-radius:999px;"></div></div>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--muted2)" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-            <div style="flex:1;height:6px;background:#dcfce7;border-radius:999px;overflow:hidden;">
-              <div style="height:100%;width:30%;background:var(--green);border-radius:999px;"></div>
-            </div>
+            <div style="flex:1;height:6px;background:#dcfce7;border-radius:999px;overflow:hidden;"><div style="height:100%;width:30%;background:var(--green);border-radius:999px;"></div></div>
             <p class="fd" style="font-size:20px;font-weight:900;color:var(--green);font-synthesis:none;">3/10</p>
           </div>
         </div>
@@ -426,13 +423,9 @@ section { padding: 56px 20px; }
           </div>
           <div style="display:flex;align-items:center;gap:10px;">
             <p class="fd" style="font-size:20px;font-weight:900;color:var(--red);font-synthesis:none;">9/10</p>
-            <div style="flex:1;height:6px;background:#fee2e2;border-radius:999px;overflow:hidden;">
-              <div style="height:100%;width:90%;background:var(--red);border-radius:999px;"></div>
-            </div>
+            <div style="flex:1;height:6px;background:#fee2e2;border-radius:999px;overflow:hidden;"><div style="height:100%;width:90%;background:var(--red);border-radius:999px;"></div></div>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--muted2)" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-            <div style="flex:1;height:6px;background:#dcfce7;border-radius:999px;overflow:hidden;">
-              <div style="height:100%;width:20%;background:var(--green);border-radius:999px;"></div>
-            </div>
+            <div style="flex:1;height:6px;background:#dcfce7;border-radius:999px;overflow:hidden;"><div style="height:100%;width:20%;background:var(--green);border-radius:999px;"></div></div>
             <p class="fd" style="font-size:20px;font-weight:900;color:var(--green);font-synthesis:none;">2/10</p>
           </div>
         </div>
@@ -456,13 +449,9 @@ section { padding: 56px 20px; }
           </div>
           <div style="display:flex;align-items:center;gap:10px;">
             <p class="fd" style="font-size:20px;font-weight:900;color:var(--red);font-synthesis:none;">7/10</p>
-            <div style="flex:1;height:6px;background:#fee2e2;border-radius:999px;overflow:hidden;">
-              <div style="height:100%;width:70%;background:var(--red);border-radius:999px;"></div>
-            </div>
+            <div style="flex:1;height:6px;background:#fee2e2;border-radius:999px;overflow:hidden;"><div style="height:100%;width:70%;background:var(--red);border-radius:999px;"></div></div>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--muted2)" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-            <div style="flex:1;height:6px;background:#dcfce7;border-radius:999px;overflow:hidden;">
-              <div style="height:100%;width:10%;background:var(--green);border-radius:999px;"></div>
-            </div>
+            <div style="flex:1;height:6px;background:#dcfce7;border-radius:999px;overflow:hidden;"><div style="height:100%;width:10%;background:var(--green);border-radius:999px;"></div></div>
             <p class="fd" style="font-size:20px;font-weight:900;color:var(--green);font-synthesis:none;">1/10</p>
           </div>
         </div>
@@ -498,7 +487,7 @@ section { padding: 56px 20px; }
       <p style="font-size:12px;color:var(--muted);margin-top:10px;text-align:center;">Equivale a <strong>menos de 1 sessão de fisio</strong> para um mês completo de tratamento</p>
     </div>
 
-    <!-- PREMIUM -->
+    <!-- PREMIUM MENSAL -->
     <div class="price-card rv" style="margin-bottom:12px;">
       <div style="position:absolute;top:14px;right:14px;background:rgba(255,255,255,0.2);border:1px solid rgba(255,255,255,0.3);padding:4px 12px;border-radius:999px;font-size:11px;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:0.06em;z-index:2;">Mais popular</div>
       <div style="position:relative;z-index:2;text-align:left;">
@@ -513,7 +502,8 @@ section { padding: 56px 20px; }
           <div style="display:flex;align-items:center;gap:10px;"><span style="color:#fff;font-size:16px;">✓</span><span style="font-size:14px;color:#fff;">Conteúdo educativo completo</span></div>
           <div style="display:flex;align-items:center;gap:10px;"><span style="color:#fff;font-size:16px;">✓</span><span style="font-size:14px;color:#fff;">Histórico completo de dor e treinos</span></div>
         </div>
-        <a href="#" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;background:#fff;color:var(--blue);font-family:Outfit,sans-serif;font-weight:900;font-size:16px;padding:0 28px;height:56px;border-radius:12px;text-decoration:none;width:100%;font-synthesis:none;">
+        <!-- ✅ LINK CORRIGIDO: vai para a página de obrigado/confirmação -->
+        <a href="lombar-obrigado.html" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;background:#fff;color:var(--blue);font-family:Outfit,sans-serif;font-weight:900;font-size:16px;padding:0 28px;height:56px;border-radius:12px;text-decoration:none;width:100%;font-synthesis:none;">
           Assinar por R$29,90/mês
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
         </a>
@@ -535,10 +525,11 @@ section { padding: 56px 20px; }
         <div style="display:flex;align-items:center;gap:10px;"><span class="ck"><svg width="9" height="9" viewBox="0 0 24 24" stroke="var(--green)" stroke-width="3" fill="none"><polyline points="20 6 9 17 4 12"/></svg></span><span style="font-size:14px;color:var(--text);">Acesso antecipado a novidades</span></div>
         <div style="display:flex;align-items:center;gap:10px;"><span class="ck"><svg width="9" height="9" viewBox="0 0 24 24" stroke="var(--green)" stroke-width="3" fill="none"><polyline points="20 6 9 17 4 12"/></svg></span><span style="font-size:14px;color:var(--text);">Suporte prioritário</span></div>
       </div>
-      <a href="#" class="btn" style="height:52px;font-size:15px;">Assinar por R$197/ano</a>
+      <!-- ✅ LINK CORRIGIDO -->
+      <a href="lombar-obrigado.html" class="btn" style="height:52px;font-size:15px;">Assinar por R$197/ano</a>
     </div>
 
-    <!-- FREE com campo de email -->
+    <!-- FREE -->
     <details class="card rv rv2" style="padding:0;margin-bottom:12px;text-align:left;cursor:pointer;">
       <summary style="padding:18px 20px;list-style:none;display:flex;justify-content:space-between;align-items:center;">
         <div>
@@ -557,10 +548,10 @@ section { padding: 56px 20px; }
             <div style="display:flex;align-items:center;gap:10px;"><span class="xk"><svg width="8" height="8" viewBox="0 0 24 24" stroke="var(--red)" stroke-width="3" fill="none"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span><span style="font-size:14px;color:var(--muted2);">Modo SOS ilimitado</span></div>
             <div style="display:flex;align-items:center;gap:10px;"><span class="xk"><svg width="8" height="8" viewBox="0 0 24 24" stroke="var(--red)" stroke-width="3" fill="none"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span><span style="font-size:14px;color:var(--muted2);">Lembretes inteligentes</span></div>
           </div>
-          <!-- EMAIL CAPTURE -->
           <p style="font-size:13px;color:var(--muted);margin-bottom:10px;">Digite seu e-mail para criar sua conta gratuita:</p>
           <div style="display:flex;flex-direction:column;gap:8px;">
             <input type="email" class="email-input" placeholder="seuemail@gmail.com" id="freeEmail"/>
+            <!-- ✅ handleFreeSignup redireciona para obrigado -->
             <button onclick="handleFreeSignup()" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--blue);color:#fff;font-family:Outfit,sans-serif;font-weight:800;font-size:15px;padding:0 20px;height:50px;border-radius:12px;border:none;cursor:pointer;width:100%;font-synthesis:none;">
               Começar grátis
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
@@ -574,23 +565,11 @@ section { padding: 56px 20px; }
     <div class="rv" style="margin-bottom:18px;">
       <p style="font-size:12px;color:var(--muted2);margin-bottom:10px;">Pagamento seguro com</p>
       <div style="display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;">
-        <div class="pay-icon">
-          <svg width="42" height="14" viewBox="0 0 42 14" fill="none"><text x="0" y="11" font-family="Arial" font-weight="900" font-size="12" fill="#32BCAD">PIX</text></svg>
-        </div>
-        <div class="pay-icon">
-          <svg width="42" height="14" viewBox="0 0 42 14"><text x="0" y="11" font-family="Arial" font-weight="700" font-size="11" fill="#1A1F71">VISA</text></svg>
-        </div>
-        <div class="pay-icon" style="gap:3px;display:flex;align-items:center;">
-          <div style="width:14px;height:14px;background:#EB001B;border-radius:50%;opacity:0.9;"></div>
-          <div style="width:14px;height:14px;background:#F79E1B;border-radius:50%;opacity:0.9;margin-left:-6px;"></div>
-        </div>
-        <div class="pay-icon">
-          <svg width="36" height="14" viewBox="0 0 36 14"><text x="0" y="11" font-family="Arial" font-weight="700" font-size="9" fill="#003087">PayPal</text></svg>
-        </div>
-        <div class="pay-icon">
-          <svg width="20" height="16" viewBox="0 0 20 16"><rect width="20" height="16" rx="3" fill="#green"/><path d="M4 4h12v8H4z" fill="#E8F5E9" rx="1"/><path d="M4 7h12" stroke="#4CAF50" stroke-width="1.5"/></svg>
-          <span style="font-size:10px;color:var(--muted);font-weight:600;">Boleto</span>
-        </div>
+        <div class="pay-icon"><svg width="42" height="14" viewBox="0 0 42 14" fill="none"><text x="0" y="11" font-family="Arial" font-weight="900" font-size="12" fill="#32BCAD">PIX</text></svg></div>
+        <div class="pay-icon"><svg width="42" height="14" viewBox="0 0 42 14"><text x="0" y="11" font-family="Arial" font-weight="700" font-size="11" fill="#1A1F71">VISA</text></svg></div>
+        <div class="pay-icon" style="gap:3px;display:flex;align-items:center;"><div style="width:14px;height:14px;background:#EB001B;border-radius:50%;opacity:0.9;"></div><div style="width:14px;height:14px;background:#F79E1B;border-radius:50%;opacity:0.9;margin-left:-6px;"></div></div>
+        <div class="pay-icon"><svg width="36" height="14" viewBox="0 0 36 14"><text x="0" y="11" font-family="Arial" font-weight="700" font-size="9" fill="#003087">PayPal</text></svg></div>
+        <div class="pay-icon"><span style="font-size:10px;color:var(--muted);font-weight:600;">Boleto</span></div>
       </div>
       <div style="display:flex;align-items:center;justify-content:center;gap:6px;margin-top:10px;">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
@@ -612,17 +591,11 @@ section { padding: 56px 20px; }
   <div class="si" style="text-align:center;">
     <h2 class="title rv">Perguntas frequentes</h2>
     <div class="card rv" style="padding:0 20px;text-align:left;margin-top:24px;">
-
       <div class="faq-item" onclick="toggleFaq(this)"><div style="display:flex;justify-content:space-between;align-items:center;padding:18px 0;gap:12px;"><p class="faq-q fd" style="font-size:15px;font-weight:700;color:var(--text);font-synthesis:none;">Preciso saber fazer exercício?</p><svg class="faq-ch" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></div><p class="faq-a">Não precisa. Os exercícios são simples, com imagens e instruções passo a passo. Foram desenhados especialmente para quem tem pouca experiência com atividade física.</p></div>
-
       <div class="faq-item" onclick="toggleFaq(this)"><div style="display:flex;justify-content:space-between;align-items:center;padding:18px 0;gap:12px;"><p class="faq-q fd" style="font-size:15px;font-weight:700;color:var(--text);font-synthesis:none;">Funciona para hérnia de disco?</p><svg class="faq-ch" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></div><p class="faq-a">Sim. O app tem exercícios específicos para hérnia de disco, adaptando a intensidade e os movimentos conforme suas limitações informadas no cadastro.</p></div>
-
       <div class="faq-item" onclick="toggleFaq(this)"><div style="display:flex;justify-content:space-between;align-items:center;padding:18px 0;gap:12px;"><p class="faq-q fd" style="font-size:15px;font-weight:700;color:var(--text);font-synthesis:none;">Isso substitui o médico ou fisioterapeuta?</p><svg class="faq-ch" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></div><p class="faq-a">Não substitui, mas complementa. O Lombar IA é um apoio diário para manutenção e alívio da dor. Se você tem uma condição grave ou dor muito intensa, recomendamos consultar um profissional de saúde. Muitos dos nossos usuários usam o app em paralelo com o tratamento indicado pelo médico.</p></div>
-
       <div class="faq-item" onclick="toggleFaq(this)"><div style="display:flex;justify-content:space-between;align-items:center;padding:18px 0;gap:12px;"><p class="faq-q fd" style="font-size:15px;font-weight:700;color:var(--text);font-synthesis:none;">Precisa de equipamentos?</p><svg class="faq-ch" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></div><p class="faq-a">Não. Todos os exercícios podem ser feitos em casa, com o espaço de um tapete. Sem equipamentos, sem academia, sem desculpa.</p></div>
-
       <div class="faq-item" onclick="toggleFaq(this)"><div style="display:flex;justify-content:space-between;align-items:center;padding:18px 0;gap:12px;"><p class="faq-q fd" style="font-size:15px;font-weight:700;color:var(--text);font-synthesis:none;">Em quanto tempo vejo resultado?</p><svg class="faq-ch" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></div><p class="faq-a">A maioria dos usuários relata melhora perceptível na dor entre 2 e 4 semanas. O Modo SOS já alivia em minutos. Os resultados dependem da consistência.</p></div>
-
       <div class="faq-item" style="border-bottom:none;" onclick="toggleFaq(this)"><div style="display:flex;justify-content:space-between;align-items:center;padding:18px 0;gap:12px;"><p class="faq-q fd" style="font-size:15px;font-weight:700;color:var(--text);font-synthesis:none;">Como funciona o cancelamento?</p><svg class="faq-ch" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></div><p class="faq-a">Cancele direto pelo app ou pelo e-mail de suporte, sem burocracia. Não cobramos mais nada a partir do cancelamento.</p></div>
     </div>
   </div>
@@ -651,7 +624,7 @@ section { padding: 56px 20px; }
   <div style="display:flex;align-items:center;justify-content:center;gap:12px;font-size:12px;color:var(--muted2);">
     <a href="#" style="color:var(--muted2);text-decoration:none;">Política de Privacidade</a><span>·</span>
     <a href="#" style="color:var(--muted2);text-decoration:none;">Termos de Uso</a><span>·</span>
-    <a href="mailto:contato@lombar.ia" style="color:var(--muted2);text-decoration:none;">Contato</a>
+    <a href="/cdn-cgi/l/email-protection#2c4f4342584d58436c4043414e4d5e02454d" style="color:var(--muted2);text-decoration:none;">Contato</a>
   </div>
 </footer>
 
@@ -663,8 +636,8 @@ section { padding: 56px 20px; }
   </a>
 </div>
 
-<script>
-// FAQ toggle
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// ── FAQ TOGGLE ────────────────────────────────────────
 function toggleFaq(el){
   const a=el.querySelector('.faq-a'),c=el.querySelector('.faq-ch'),open=a.style.display==='block';
   document.querySelectorAll('.faq-a').forEach(x=>x.style.display='none');
@@ -672,15 +645,14 @@ function toggleFaq(el){
   if(!open){a.style.display='block';c.style.transform='rotate(180deg)';}
 }
 
-// Reveal on scroll
+// ── REVEAL ON SCROLL ──────────────────────────────────
 const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('on');});},{threshold:0.1});
 document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
 
-// Sticky CTA — hide near pricing, show near final CTA, always show elsewhere
+// ── STICKY CTA ────────────────────────────────────────
 const pr=document.getElementById('pricing');
 const fc=document.getElementById('finalCta');
 const sc=document.getElementById('sc');
-
 if(pr&&sc){
   const pricingObs=new IntersectionObserver(e=>{
     e.forEach(x=>{
@@ -689,13 +661,11 @@ if(pr&&sc){
     });
   },{threshold:0.15});
   pricingObs.observe(pr);
-
   if(fc){
     const finalObs=new IntersectionObserver(e=>{
       e.forEach(x=>{
         if(x.isIntersecting){sc.style.opacity='0';sc.style.pointerEvents='none';}
         else{
-          // Only show if pricing is also not visible
           const prRect=pr.getBoundingClientRect();
           if(!(prRect.top < window.innerHeight && prRect.bottom > 0)){
             sc.style.opacity='1';sc.style.pointerEvents='auto';
@@ -707,58 +677,136 @@ if(pr&&sc){
   }
 }
 
-// Pain chart animation
-const chartData = [
-  {week:'Sem. 1', value:7.8, label:'7.8'},
-  {week:'Sem. 2', value:5.2, label:'5.2'},
-  {week:'Sem. 3', value:3.4, label:'3.4'},
-  {week:'Sem. 4', value:2.5, label:'2.5'},
-];
-const maxVal = 10;
-const chartEl = document.getElementById('painChart');
-const colors = ['#dc2626','#f59e0b','#3b82f6','#16a34a'];
-
+// ── PAIN CHART ────────────────────────────────────────
+const chartData=[{value:7.8,label:'7.8'},{value:5.2,label:'5.2'},{value:3.4,label:'3.4'},{value:2.5,label:'2.5'}];
+const maxVal=10;
+const chartEl=document.getElementById('painChart');
+const colors=['#dc2626','#f59e0b','#3b82f6','#16a34a'];
 chartData.forEach((d,i)=>{
-  const pct = (d.value/maxVal)*100;
-  const div = document.createElement('div');
+  const pct=(d.value/maxVal)*100;
+  const div=document.createElement('div');
   div.style.cssText='flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:4px;height:100%;';
-  div.innerHTML=`
-    <span style="font-family:Outfit,sans-serif;font-weight:900;font-size:13px;color:${colors[i]};font-synthesis:none;">${d.label}</span>
-    <div style="width:100%;background:${colors[i]};opacity:0.85;border-radius:6px 6px 0 0;height:0%;transition:height 1.2s cubic-bezier(.34,1.56,.64,1) ${i*0.15}s;" data-h="${pct}"></div>
-  `;
+  div.innerHTML=`<span style="font-family:Outfit,sans-serif;font-weight:900;font-size:13px;color:${colors[i]};font-synthesis:none;">${d.label}</span><div style="width:100%;background:${colors[i]};opacity:0.85;border-radius:6px 6px 0 0;height:0%;transition:height 1.2s cubic-bezier(.34,1.56,.64,1) ${i*0.15}s;" data-h="${pct}"></div>`;
   chartEl.appendChild(div);
 });
-
-// Animate bars on scroll
-const chartObs = new IntersectionObserver(e=>{
+const chartObs=new IntersectionObserver(e=>{
   e.forEach(x=>{
     if(x.isIntersecting){
-      document.querySelectorAll('#painChart [data-h]').forEach(bar=>{
-        bar.style.height=bar.dataset.h+'%';
-      });
+      document.querySelectorAll('#painChart [data-h]').forEach(bar=>{bar.style.height=bar.dataset.h+'%';});
       chartObs.disconnect();
     }
   });
 },{threshold:0.3});
 chartObs.observe(chartEl);
 
-// Free signup
+// ── FREE SIGNUP ✅ redireciona para obrigado ───────────
 function handleFreeSignup(){
-  const email=document.getElementById('freeEmail').value;
+  const emailEl=document.getElementById('freeEmail');
+  const email=emailEl.value.trim();
   if(!email||!email.includes('@')){
-    document.getElementById('freeEmail').style.borderColor='var(--red)';
-    document.getElementById('freeEmail').focus();
+    emailEl.style.borderColor='var(--red)';
+    emailEl.focus();
     return;
   }
-  // In production: send to backend / Supabase
-  alert('Conta criada! Verifique seu e-mail: '+email);
+  emailEl.style.borderColor='var(--green)';
+  // Salva e-mail para uso na página de obrigado (opcional)
+  sessionStorage.setItem('userEmail', email);
+  sessionStorage.setItem('plan', 'free');
+  // Redireciona para página de confirmação
+  window.location.href='lombar-obrigado.html';
 }
 
-// Details arrow toggle
-document.querySelector('details').addEventListener('toggle',function(e){
-  const arrow=document.getElementById('freeArrow');
-  if(this.open){arrow.style.transform='rotate(180deg)';}
-  else{arrow.style.transform='rotate(0deg)';}
+// ── FREE DETAILS ARROW ────────────────────────────────
+const det=document.querySelector('details');
+if(det){
+  det.addEventListener('toggle',function(){
+    const arrow=document.getElementById('freeArrow');
+    if(arrow) arrow.style.transform=this.open?'rotate(180deg)':'rotate(0deg)';
+  });
+}
+
+// ── EXIT INTENT — calibrado para usuários 40-60+ ─────
+// Esse público: lê devagar, decide com calma,
+// fecha o app sem usar botão Voltar, rola lentamente.
+let exitShown = false;
+
+function showExit() {
+  if (exitShown) return;
+  exitShown = true;
+  document.getElementById('exitOverlay').classList.add('active');
+}
+
+document.getElementById('exitOverlay').addEventListener('click', function(e){
+  if (e.target === this) this.classList.remove('active');
+});
+
+// 1. DESKTOP: mouse saindo pelo topo
+document.addEventListener('mouseleave', function(e){
+  if (e.clientY <= 5) showExit();
+});
+
+// 2. BOTÃO VOLTAR — funciona em Android (menos em iOS)
+history.pushState({ lombarExit: true }, '');
+window.addEventListener('popstate', function() {
+  showExit();
+  history.pushState({ lombarExit: true }, '');
+});
+
+// 3. SCROLL LENTO PARA CIMA
+// Threshold menor (100px) porque esse público rola devagar.
+// Sem verificar velocidade — só direção + posição.
+let lastScrollY = window.scrollY;
+let scrollUpAcc = 0;
+window.addEventListener('scroll', function() {
+  const cur = window.scrollY;
+  const diff = lastScrollY - cur;
+  if (diff > 0) {
+    scrollUpAcc += diff;
+    // 100px acumulado rolando pra cima perto do topo = sinal de saída
+    if (scrollUpAcc > 100 && cur < 400) showExit();
+  } else {
+    scrollUpAcc = 0;
+  }
+  lastScrollY = cur;
+}, { passive: true });
+
+// 4. TEMPO NO PRICING — 90s (eles leem tudo com calma)
+// 30s era curto demais: eles podem ficar 2-3min na página de preços.
+let pricingTimer = null;
+const pricingSectionEl = document.getElementById('pricing');
+if (pricingSectionEl) {
+  const pricingObs2 = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        // 90 segundos — tempo suficiente pra ler com calma
+        pricingTimer = setTimeout(function() { showExit(); }, 90000);
+      } else {
+        clearTimeout(pricingTimer);
+      }
+    });
+  }, { threshold: 0.3 });
+  pricingObs2.observe(pricingSectionEl);
+}
+
+// 5. INATIVIDADE TOTAL — 2 minutos parado = provavelmente foi buscar
+// ajuda de alguém (filho, cônjuge). Mostra o WhatsApp quando voltar.
+let inactivityTimer;
+function resetInactivity() {
+  clearTimeout(inactivityTimer);
+  inactivityTimer = setTimeout(function() { showExit(); }, 120000);
+}
+['scroll','touchstart','click','keydown'].forEach(function(ev) {
+  document.addEventListener(ev, resetInactivity, { passive: true });
+});
+resetInactivity();
+
+// Cancela tudo se o usuário clicar em comprar
+document.querySelectorAll('a[href="lombar-obrigado.html"]').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    clearTimeout(pricingTimer);
+    clearTimeout(inactivityTimer);
+    exitShown = true;
+  });
 });
 </script>
 </body>
