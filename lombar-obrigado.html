@@ -11,81 +11,156 @@ body{background:#f0f7ff;color:#1a1a2e;font-family:'DM Sans',sans-serif;overflow-
 :root{--blue:#1d4ed8;--blue-dim:rgba(29,78,216,0.08);--blue-border:rgba(29,78,216,0.2);--teal:#0891b2;--text:#1a1a2e;--muted:#6b7280;--muted2:#9ca3af;--border:#e5e7eb;--green:#16a34a;}
 .fd{font-family:'Outfit',sans-serif;font-synthesis:none;}
 .tg{background:linear-gradient(135deg,#1d4ed8,#0891b2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+
+/* BUTTON */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--blue);color:#fff;font-family:'Outfit',sans-serif;font-weight:800;font-size:17px;padding:0 28px;height:58px;border-radius:14px;border:none;cursor:pointer;text-decoration:none;white-space:nowrap;transition:transform 0.2s,box-shadow 0.2s;box-shadow:0 4px 20px rgba(29,78,216,0.35);width:100%;max-width:400px;font-synthesis:none;}
 .btn:active{transform:scale(0.97);}
-@keyframes fu{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
-.a1{animation:fu 0.5s ease both;}.a2{animation:fu 0.5s 0.15s ease both;}.a3{animation:fu 0.5s 0.3s ease both;}.a4{animation:fu 0.5s 0.45s ease both;}.a5{animation:fu 0.5s 0.6s ease both;}
-@keyframes pop{0%{transform:scale(0.5);opacity:0;}70%{transform:scale(1.15);}100%{transform:scale(1);opacity:1;}}
-.icon-pop{animation:pop 0.6s 0.1s ease both;}
-@keyframes confetti-fall{0%{transform:translateY(-20px) rotate(0deg);opacity:1;}100%{transform:translateY(100vh) rotate(720deg);opacity:0;}}
-.cf{position:fixed;top:-20px;width:10px;height:10px;border-radius:2px;animation:confetti-fall linear forwards;pointer-events:none;}
-.step-num{width:32px;height:32px;min-width:32px;border-radius:50%;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-weight:800;font-size:15px;font-synthesis:none;}
+
+/* PULSE — correctly in CSS, not JS */
+@keyframes pulse-btn{0%,100%{box-shadow:0 4px 20px rgba(29,78,216,0.35);}50%{box-shadow:0 4px 36px rgba(29,78,216,0.6);}}
+.btn-p{animation:pulse-btn 2.5s ease-in-out infinite;}
+
+/* ANIMATIONS */
+@keyframes fu{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+.a1{animation:fu 0.5s ease both;}
+.a2{animation:fu 0.5s 0.15s ease both;}
+.a3{animation:fu 0.5s 0.3s ease both;}
+.a4{animation:fu 0.5s 0.45s ease both;}
+.a5{animation:fu 0.5s 0.6s ease both;}
+.a6{animation:fu 0.5s 0.75s ease both;}
+
+@keyframes pop{0%{transform:scale(0.4);opacity:0;}65%{transform:scale(1.18);}100%{transform:scale(1);opacity:1;}}
+.icon-pop{animation:pop 0.65s 0.05s ease both;}
+
+@keyframes confetti-fall{
+  0%{transform:translateY(-30px) rotate(0deg) scale(1);opacity:1;}
+  80%{opacity:1;}
+  100%{transform:translateY(105vh) rotate(800deg) scale(0.5);opacity:0;}
+}
+.cf{position:fixed;top:-30px;pointer-events:none;z-index:999;}
+
+/* CHECKLIST ITEM */
 .ck{width:22px;height:22px;min-width:22px;border-radius:50%;background:rgba(22,163,74,0.1);border:1px solid rgba(22,163,74,0.3);display:inline-flex;align-items:center;justify-content:center;}
+
+/* STEP NUMBER */
+.step-num{width:34px;height:34px;min-width:34px;border-radius:50%;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-weight:800;font-size:15px;font-synthesis:none;}
+
+/* SHARE BUTTON */
+.share-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 18px;border-radius:12px;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-weight:600;font-size:14px;text-decoration:none;transition:transform 0.15s,opacity 0.15s;flex:1;}
+.share-btn:active{transform:scale(0.96);}
+
+/* UPSELL CARD */
+.upsell{background:linear-gradient(135deg,#fef3c7,#fde68a);border:2px solid #f59e0b;border-radius:18px;padding:22px;margin-bottom:16px;position:relative;overflow:hidden;}
+.upsell::before{content:'';position:absolute;top:-30px;right:-30px;width:120px;height:120px;background:rgba(245,158,11,0.15);border-radius:50%;}
+
+/* COUNTDOWN */
+.cbox{background:rgba(255,255,255,0.8);border-radius:10px;padding:8px 14px;min-width:52px;text-align:center;border:1px solid rgba(245,158,11,0.3);}
 </style>
 </head>
 <body>
 
-<!-- CONFETTI (via JS) -->
-
-<div style="max-width:480px;margin:0 auto;padding:40px 20px 60px;">
+<div style="max-width:480px;margin:0 auto;padding:36px 20px 72px;">
 
   <!-- SUCCESS ICON -->
-  <div class="a1" style="text-align:center;margin-bottom:24px;">
-    <div class="icon-pop" style="width:88px;height:88px;background:linear-gradient(135deg,#1d4ed8,#0891b2);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;">
-      <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+  <div class="a1" style="text-align:center;margin-bottom:20px;">
+    <div class="icon-pop" style="width:92px;height:92px;background:linear-gradient(135deg,#1d4ed8,#0891b2);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;box-shadow:0 12px 40px rgba(29,78,216,0.35);">
+      <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
     </div>
-    <p class="fd" style="font-size:13px;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:0.1em;font-synthesis:none;">Compra confirmada ✓</p>
+    <p class="fd" style="font-size:13px;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:0.1em;">Compra confirmada ✓</p>
   </div>
 
   <!-- MAIN MESSAGE -->
   <div class="a2" style="background:#fff;border-radius:20px;padding:28px 22px;margin-bottom:16px;box-shadow:0 4px 24px rgba(29,78,216,0.08);border:1px solid var(--border);text-align:center;">
-    <h1 class="fd" style="font-weight:900;font-size:clamp(26px,7vw,36px);color:var(--text);line-height:1.15;margin-bottom:12px;font-synthesis:none;">
+    <h1 class="fd" style="font-weight:900;font-size:clamp(26px,7vw,36px);color:var(--text);line-height:1.15;margin-bottom:12px;">
       Seu acesso está <span class="tg">liberado!</span> 🎉
     </h1>
-    <p style="font-size:16px;color:var(--muted);line-height:1.7;">Bem-vindo ao Lombar IA. A partir de agora, você tem tudo que precisa para acabar com a dor nas costas.</p>
+    <p style="font-size:16px;color:var(--muted);line-height:1.7;margin-bottom:16px;">Bem-vindo ao Lombar IA. A partir de agora, você tem tudo que precisa para acabar com a dor nas costas.</p>
+    <!-- MINI STATS -->
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;">
+      <div style="background:var(--blue-dim);border-radius:10px;padding:10px 6px;text-align:center;">
+        <p class="fd" style="font-weight:900;font-size:18px;color:var(--blue);">87%</p>
+        <p style="font-size:10px;color:var(--muted);line-height:1.3;">sentem melhora em 3 sem.</p>
+      </div>
+      <div style="background:var(--blue-dim);border-radius:10px;padding:10px 6px;text-align:center;">
+        <p class="fd" style="font-weight:900;font-size:18px;color:var(--blue);">-68%</p>
+        <p style="font-size:10px;color:var(--muted);line-height:1.3;">redução média da dor</p>
+      </div>
+      <div style="background:var(--blue-dim);border-radius:10px;padding:10px 6px;text-align:center;">
+        <p class="fd" style="font-weight:900;font-size:18px;color:var(--blue);">15min</p>
+        <p style="font-size:10px;color:var(--muted);line-height:1.3;">por dia é suficiente</p>
+      </div>
+    </div>
   </div>
 
-  <!-- ACESSO -->
-  <div class="a3" style="background:linear-gradient(135deg,#1d4ed8,#0891b2);border-radius:16px;padding:24px;margin-bottom:16px;text-align:center;position:relative;overflow:hidden;">
-    <div style="position:absolute;top:-20px;right:-20px;width:100px;height:100px;background:rgba(255,255,255,0.07);border-radius:50%;"></div>
-    <p class="fd" style="font-size:14px;font-weight:700;color:rgba(255,255,255,0.7);margin-bottom:8px;font-synthesis:none;">Acesse agora pelo botão abaixo</p>
-    <a href="#" class="a3" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;background:#fff;color:var(--blue);font-family:Outfit,sans-serif;font-weight:900;font-size:16px;padding:0 24px;height:56px;border-radius:12px;text-decoration:none;width:100%;font-synthesis:none;position:relative;z-index:2;">
+  <!-- ACESSO PRINCIPAL -->
+  <div class="a3" style="background:linear-gradient(135deg,#1d4ed8,#0891b2);border-radius:18px;padding:26px 22px;margin-bottom:16px;text-align:center;position:relative;overflow:hidden;">
+    <div style="position:absolute;top:-25px;right:-25px;width:110px;height:110px;background:rgba(255,255,255,0.07);border-radius:50%;"></div>
+    <div style="position:absolute;bottom:-30px;left:-20px;width:80px;height:80px;background:rgba(255,255,255,0.05);border-radius:50%;"></div>
+    <p class="fd" style="font-size:14px;font-weight:700;color:rgba(255,255,255,0.75);margin-bottom:14px;position:relative;z-index:2;">Comece seu primeiro treino agora:</p>
+    <a href="#" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;background:#fff;color:var(--blue);font-family:Outfit,sans-serif;font-weight:900;font-size:17px;padding:0 24px;height:58px;border-radius:14px;text-decoration:none;width:100%;font-synthesis:none;position:relative;z-index:2;box-shadow:0 4px 20px rgba(0,0,0,0.15);">
       Abrir o Lombar IA
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
     </a>
-    <p style="font-size:12px;color:rgba(255,255,255,0.45);margin-top:10px;position:relative;z-index:2;">Você também receberá um e-mail com o link de acesso</p>
+    <p style="font-size:12px;color:rgba(255,255,255,0.5);margin-top:12px;position:relative;z-index:2;">📧 Você também receberá o link de acesso por e-mail</p>
+  </div>
+
+  <!-- UPSELL ANUAL (mostrar só se comprou mensal) -->
+  <div class="upsell a4" id="upsellCard">
+    <div style="position:relative;z-index:2;">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+        <span style="font-size:20px;">⚡</span>
+        <p class="fd" style="font-size:12px;font-weight:800;color:#92400e;text-transform:uppercase;letter-spacing:0.08em;">Oferta exclusiva pós-compra</p>
+      </div>
+      <h3 class="fd" style="font-size:18px;font-weight:900;color:#78350f;margin-bottom:8px;line-height:1.25;">Faça upgrade para o Anual e economize R$161</h3>
+      <p style="font-size:13px;color:#92400e;line-height:1.6;margin-bottom:14px;">Você acabou de assinar por R$29,90/mês. Upgrade agora para o plano anual por apenas <strong>R$197</strong> e economize R$161,80 — 45% de desconto, exclusivo para quem acabou de assinar.</p>
+
+      <!-- COUNTDOWN -->
+      <p style="font-size:12px;color:#92400e;font-weight:600;margin-bottom:8px;">⏱ Oferta expira em:</p>
+      <div style="display:flex;gap:8px;margin-bottom:16px;">
+        <div class="cbox"><p class="fd" style="font-size:20px;font-weight:900;color:#78350f;" id="ctMin">14</p><p style="font-size:10px;color:#92400e;">min</p></div>
+        <div style="display:flex;align-items:center;padding-bottom:14px;"><p class="fd" style="font-size:20px;font-weight:900;color:#78350f;">:</p></div>
+        <div class="cbox"><p class="fd" style="font-size:20px;font-weight:900;color:#78350f;" id="ctSec">59</p><p style="font-size:10px;color:#92400e;">seg</p></div>
+      </div>
+
+      <a href="#" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;background:#f59e0b;color:#fff;font-family:Outfit,sans-serif;font-weight:900;font-size:15px;height:52px;border-radius:12px;text-decoration:none;width:100%;font-synthesis:none;border:none;cursor:pointer;box-shadow:0 4px 16px rgba(245,158,11,0.4);">
+        Sim! Quero o Anual por R$197
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </a>
+      <p style="font-size:11px;color:#a16207;margin-top:8px;text-align:center;">Você só paga a diferença de R$167,10 agora</p>
+      <button onclick="document.getElementById('upsellCard').style.display='none'" style="background:none;border:none;font-size:11px;color:#a16207;cursor:pointer;margin-top:6px;display:block;width:100%;text-align:center;">Não, prefiro continuar no mensal</button>
+    </div>
   </div>
 
   <!-- PRÓXIMOS PASSOS -->
-  <div class="a4" style="background:#fff;border-radius:16px;padding:22px;margin-bottom:16px;border:1px solid var(--border);">
-    <p class="fd" style="font-size:15px;font-weight:800;color:var(--text);margin-bottom:18px;font-synthesis:none;">O que fazer agora:</p>
+  <div class="a5" style="background:#fff;border-radius:16px;padding:22px;margin-bottom:16px;border:1px solid var(--border);">
+    <p class="fd" style="font-size:15px;font-weight:800;color:var(--text);margin-bottom:18px;">O que fazer agora:</p>
     <div style="display:flex;flex-direction:column;gap:16px;">
       <div style="display:flex;align-items:flex-start;gap:14px;">
         <div class="step-num">1</div>
         <div>
-          <p class="fd" style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:2px;font-synthesis:none;">Faça seu cadastro no app</p>
+          <p class="fd" style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:2px;">Faça seu cadastro no app</p>
           <p style="font-size:13px;color:var(--muted);line-height:1.5;">Crie sua conta com e-mail ou Google. Rápido e simples.</p>
         </div>
       </div>
       <div style="display:flex;align-items:flex-start;gap:14px;">
         <div class="step-num">2</div>
         <div>
-          <p class="fd" style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:2px;font-synthesis:none;">Responda o questionário inicial</p>
+          <p class="fd" style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:2px;">Responda o questionário inicial</p>
           <p style="font-size:13px;color:var(--muted);line-height:1.5;">5 perguntas sobre sua dor e rotina. Leva menos de 3 minutos.</p>
         </div>
       </div>
       <div style="display:flex;align-items:flex-start;gap:14px;">
         <div class="step-num">3</div>
         <div>
-          <p class="fd" style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:2px;font-synthesis:none;">Receba seu primeiro treino</p>
+          <p class="fd" style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:2px;">Receba seu primeiro treino</p>
           <p style="font-size:13px;color:var(--muted);line-height:1.5;">A IA já monta seu plano personalizado. Faça hoje mesmo!</p>
         </div>
       </div>
       <div style="display:flex;align-items:flex-start;gap:14px;">
         <div class="step-num" style="background:var(--green);">4</div>
         <div>
-          <p class="fd" style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:2px;font-synthesis:none;">Se tiver dor agora — use o SOS</p>
-          <p style="font-size:13px;color:var(--muted);line-height:1.5;">Botão vermelho na tela inicial. Alívio em minutos.</p>
+          <p class="fd" style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:2px;">Se tiver dor agora — use o SOS</p>
+          <p style="font-size:13px;color:var(--muted);line-height:1.5;">Botão vermelho na tela inicial. Alívio imediato.</p>
         </div>
       </div>
     </div>
@@ -93,28 +168,44 @@ body{background:#f0f7ff;color:#1a1a2e;font-family:'DM Sans',sans-serif;overflow-
 
   <!-- O QUE VOCÊ TEM ACESSO -->
   <div class="a5" style="background:linear-gradient(135deg,rgba(29,78,216,0.04),rgba(8,145,178,0.04));border:2px solid var(--blue-border);border-radius:16px;padding:20px;margin-bottom:16px;">
-    <p class="fd" style="font-size:14px;font-weight:800;color:var(--text);margin-bottom:12px;font-synthesis:none;">Seu acesso inclui:</p>
+    <p class="fd" style="font-size:14px;font-weight:800;color:var(--text);margin-bottom:12px;">Seu acesso inclui:</p>
     <div style="display:flex;flex-direction:column;gap:9px;">
       <div style="display:flex;align-items:center;gap:10px;"><span class="ck"><svg width="9" height="9" viewBox="0 0 24 24" stroke="var(--green)" stroke-width="3" fill="none"><polyline points="20 6 9 17 4 12"/></svg></span><span style="font-size:14px;color:var(--text);">Treino personalizado por IA todo dia</span></div>
-      <div style="display:flex;align-items:center;gap:10px;"><span class="ck"><svg width="9" height="9" viewBox="0 0 24 24" stroke="var(--green)" stroke-width="3" fill="none"><polyline points="20 6 9 17 4 12"/></svg></span><span style="font-size:14px;color:var(--text);">Modo SOS — Alívio imediato da dor</span></div>
+      <div style="display:flex;align-items:center;gap:10px;"><span class="ck"><svg width="9" height="9" viewBox="0 0 24 24" stroke="var(--green)" stroke-width="3" fill="none"><polyline points="20 6 9 17 4 12"/></svg></span><span style="font-size:14px;color:var(--text);">Modo SOS — Alívio imediato ilimitado</span></div>
       <div style="display:flex;align-items:center;gap:10px;"><span class="ck"><svg width="9" height="9" viewBox="0 0 24 24" stroke="var(--green)" stroke-width="3" fill="none"><polyline points="20 6 9 17 4 12"/></svg></span><span style="font-size:14px;color:var(--text);">Gráfico de evolução da sua dor</span></div>
       <div style="display:flex;align-items:center;gap:10px;"><span class="ck"><svg width="9" height="9" viewBox="0 0 24 24" stroke="var(--green)" stroke-width="3" fill="none"><polyline points="20 6 9 17 4 12"/></svg></span><span style="font-size:14px;color:var(--text);">Lembretes inteligentes</span></div>
       <div style="display:flex;align-items:center;gap:10px;"><span class="ck"><svg width="9" height="9" viewBox="0 0 24 24" stroke="var(--green)" stroke-width="3" fill="none"><polyline points="20 6 9 17 4 12"/></svg></span><span style="font-size:14px;color:var(--text);">Conteúdo educativo completo</span></div>
     </div>
   </div>
 
-  <!-- GARANTIA LEMBRETE -->
-  <div class="a5" style="background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px;margin-bottom:24px;display:flex;align-items:center;gap:14px;">
-    <div style="font-size:30px;flex-shrink:0;">🛡️</div>
-    <div>
-      <p class="fd" style="font-size:14px;font-weight:800;color:var(--text);margin-bottom:2px;font-synthesis:none;">Garantia de 7 dias</p>
-      <p style="font-size:13px;color:var(--muted);line-height:1.5;">Se não funcionar, devolvemos 100%. Sem perguntas.</p>
+  <!-- COMPARTILHAR (referral social) -->
+  <div class="a6" style="background:#fff;border:1px solid var(--border);border-radius:16px;padding:20px;margin-bottom:16px;">
+    <p class="fd" style="font-size:14px;font-weight:800;color:var(--text);margin-bottom:4px;">Conhece alguém com dor nas costas?</p>
+    <p style="font-size:13px;color:var(--muted);margin-bottom:14px;line-height:1.5;">Compartilhe o Lombar IA. Pode ser a melhor coisa que você faz por alguém hoje.</p>
+    <div style="display:flex;gap:8px;">
+      <a href="https://wa.me/?text=Acabei+de+entrar+no+Lombar+IA+e+tô+adorando!+Eles+usam+IA+pra+acabar+com+dor+lombar+em+30+dias.+Você+precisa+conhecer%3A+https%3A%2F%2Flombar.ia" target="_blank" class="share-btn" style="background:#25D366;color:#fff;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp
+      </a>
+      <button onclick="copyLink()" class="share-btn" style="background:var(--blue-dim);color:var(--blue);border:1px solid var(--blue-border);" id="copyBtn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        Copiar link
+      </button>
     </div>
   </div>
 
-  <!-- BTN ACESSAR -->
+  <!-- GARANTIA LEMBRETE -->
+  <div class="a6" style="background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px;margin-bottom:24px;display:flex;align-items:center;gap:14px;">
+    <div style="font-size:30px;flex-shrink:0;">🛡️</div>
+    <div>
+      <p class="fd" style="font-size:14px;font-weight:800;color:var(--text);margin-bottom:2px;">Garantia de 7 dias</p>
+      <p style="font-size:13px;color:var(--muted);line-height:1.5;">Se não funcionar, devolvemos 100%. Sem perguntas. Sem burocracia.</p>
+    </div>
+  </div>
+
+  <!-- BTN FINAL -->
   <div style="display:flex;justify-content:center;">
-    <a href="#" class="btn" style="animation:pulse-btn 2.5s ease-in-out infinite;box-shadow:0 4px 20px rgba(29,78,216,0.35);">
+    <a href="#" class="btn btn-p">
       Abrir o Lombar IA agora
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
     </a>
@@ -122,22 +213,65 @@ body{background:#f0f7ff;color:#1a1a2e;font-family:'DM Sans',sans-serif;overflow-
 
   <!-- FOOTER -->
   <div style="text-align:center;margin-top:28px;">
-    <p class="fd" style="font-weight:800;font-size:14px;color:var(--text);margin-bottom:4px;font-synthesis:none;">Lombar <span class="tg">IA</span></p>
+    <p class="fd" style="font-weight:800;font-size:14px;color:var(--text);margin-bottom:4px;">Lombar <span class="tg">IA</span></p>
     <p style="font-size:12px;color:var(--muted2);">Dúvidas? <a href="mailto:contato@lombar.ia" style="color:var(--blue);text-decoration:none;">contato@lombar.ia</a></p>
   </div>
 </div>
 
 <script>
-// CONFETTI
-const colors=['#1d4ed8','#0891b2','#16a34a','#f59e0b','#ec4899'];
-for(let i=0;i<40;i++){
+// ── CONFETTI ──────────────────────────────────────────
+const colors=['#1d4ed8','#0891b2','#16a34a','#f59e0b','#ec4899','#8b5cf6'];
+const shapes=['50%','2px','4px'];
+for(let i=0;i<55;i++){
   const el=document.createElement('div');
   el.className='cf';
-  el.style.cssText=`left:${Math.random()*100}vw;background:${colors[Math.floor(Math.random()*colors.length)]};width:${6+Math.random()*8}px;height:${6+Math.random()*8}px;animation-duration:${2+Math.random()*2}s;animation-delay:${Math.random()*1.5}s;border-radius:${Math.random()>0.5?'50%':'2px'};`;
+  const size=6+Math.random()*9;
+  el.style.cssText=`
+    left:${Math.random()*100}vw;
+    width:${size}px;
+    height:${size}px;
+    background:${colors[Math.floor(Math.random()*colors.length)]};
+    border-radius:${shapes[Math.floor(Math.random()*shapes.length)]};
+    animation:confetti-fall ${1.8+Math.random()*2.2}s ${Math.random()*1.8}s linear forwards;
+  `;
   document.body.appendChild(el);
-  setTimeout(()=>el.remove(),(4500+Math.random()*2000));
+  setTimeout(()=>el.remove(), 5500);
 }
-@keyframes pulse-btn{0%,100%{box-shadow:0 4px 20px rgba(29,78,216,0.35);}50%{box-shadow:0 4px 32px rgba(29,78,216,0.55);}}
+
+// ── COUNTDOWN TIMER ───────────────────────────────────
+let total = 14*60 + 59;
+const minEl = document.getElementById('ctMin');
+const secEl = document.getElementById('ctSec');
+const timerInterval = setInterval(()=>{
+  if(total <= 0){
+    clearInterval(timerInterval);
+    const card = document.getElementById('upsellCard');
+    if(card) card.style.display='none';
+    return;
+  }
+  total--;
+  const m = Math.floor(total/60);
+  const s = total%60;
+  minEl.textContent = String(m).padStart(2,'0');
+  secEl.textContent = String(s).padStart(2,'0');
+}, 1000);
+
+// ── COPY LINK ─────────────────────────────────────────
+function copyLink(){
+  navigator.clipboard.writeText('https://lombar.ia').then(()=>{
+    const btn = document.getElementById('copyBtn');
+    btn.innerHTML='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Copiado!';
+    btn.style.background='rgba(22,163,74,0.1)';
+    btn.style.color='var(--green)';
+    btn.style.borderColor='rgba(22,163,74,0.3)';
+    setTimeout(()=>{
+      btn.innerHTML='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Copiar link';
+      btn.style.background='var(--blue-dim)';
+      btn.style.color='var(--blue)';
+      btn.style.borderColor='var(--blue-border)';
+    }, 2500);
+  });
+}
 </script>
 </body>
 </html>
