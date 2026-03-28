@@ -16,11 +16,9 @@ body{background:#f0f7ff;color:#1a1a2e;font-family:'DM Sans',sans-serif;overflow-
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--blue);color:#fff;font-family:'Outfit',sans-serif;font-weight:800;font-size:17px;padding:0 28px;height:58px;border-radius:14px;border:none;cursor:pointer;text-decoration:none;white-space:nowrap;transition:transform 0.2s,box-shadow 0.2s;box-shadow:0 4px 20px rgba(29,78,216,0.35);width:100%;max-width:400px;font-synthesis:none;}
 .btn:active{transform:scale(0.97);}
 
-/* PULSE — correctly in CSS, not JS */
 @keyframes pulse-btn{0%,100%{box-shadow:0 4px 20px rgba(29,78,216,0.35);}50%{box-shadow:0 4px 36px rgba(29,78,216,0.6);}}
 .btn-p{animation:pulse-btn 2.5s ease-in-out infinite;}
 
-/* ANIMATIONS */
 @keyframes fu{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
 .a1{animation:fu 0.5s ease both;}
 .a2{animation:fu 0.5s 0.15s ease both;}
@@ -39,21 +37,15 @@ body{background:#f0f7ff;color:#1a1a2e;font-family:'DM Sans',sans-serif;overflow-
 }
 .cf{position:fixed;top:-30px;pointer-events:none;z-index:999;}
 
-/* CHECKLIST ITEM */
 .ck{width:22px;height:22px;min-width:22px;border-radius:50%;background:rgba(22,163,74,0.1);border:1px solid rgba(22,163,74,0.3);display:inline-flex;align-items:center;justify-content:center;}
-
-/* STEP NUMBER */
 .step-num{width:34px;height:34px;min-width:34px;border-radius:50%;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-weight:800;font-size:15px;font-synthesis:none;}
 
-/* SHARE BUTTON */
 .share-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 18px;border-radius:12px;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-weight:600;font-size:14px;text-decoration:none;transition:transform 0.15s,opacity 0.15s;flex:1;}
 .share-btn:active{transform:scale(0.96);}
 
-/* UPSELL CARD */
 .upsell{background:linear-gradient(135deg,#fef3c7,#fde68a);border:2px solid #f59e0b;border-radius:18px;padding:22px;margin-bottom:16px;position:relative;overflow:hidden;}
 .upsell::before{content:'';position:absolute;top:-30px;right:-30px;width:120px;height:120px;background:rgba(245,158,11,0.15);border-radius:50%;}
 
-/* COUNTDOWN */
 .cbox{background:rgba(255,255,255,0.8);border-radius:10px;padding:8px 14px;min-width:52px;text-align:center;border:1px solid rgba(245,158,11,0.3);}
 </style>
 </head>
@@ -97,14 +89,15 @@ body{background:#f0f7ff;color:#1a1a2e;font-family:'DM Sans',sans-serif;overflow-
     <div style="position:absolute;top:-25px;right:-25px;width:110px;height:110px;background:rgba(255,255,255,0.07);border-radius:50%;"></div>
     <div style="position:absolute;bottom:-30px;left:-20px;width:80px;height:80px;background:rgba(255,255,255,0.05);border-radius:50%;"></div>
     <p class="fd" style="font-size:14px;font-weight:700;color:rgba(255,255,255,0.75);margin-bottom:14px;position:relative;z-index:2;">Comece seu primeiro treino agora:</p>
-    <a href="#" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;background:#fff;color:var(--blue);font-family:Outfit,sans-serif;font-weight:900;font-size:17px;padding:0 24px;height:58px;border-radius:14px;text-decoration:none;width:100%;font-synthesis:none;position:relative;z-index:2;box-shadow:0 4px 20px rgba(0,0,0,0.15);">
+    <!-- ✅ Botão principal — aponte para o app real quando disponível -->
+    <a href="https://app.lombar.ia" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;background:#fff;color:var(--blue);font-family:Outfit,sans-serif;font-weight:900;font-size:17px;padding:0 24px;height:58px;border-radius:14px;text-decoration:none;width:100%;font-synthesis:none;position:relative;z-index:2;box-shadow:0 4px 20px rgba(0,0,0,0.15);">
       Abrir o Lombar IA
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
     </a>
     <p style="font-size:12px;color:rgba(255,255,255,0.5);margin-top:12px;position:relative;z-index:2;">📧 Você também receberá o link de acesso por e-mail</p>
   </div>
 
-  <!-- UPSELL ANUAL (mostrar só se comprou mensal) -->
+  <!-- UPSELL ANUAL -->
   <div class="upsell a4" id="upsellCard">
     <div style="position:relative;z-index:2;">
       <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
@@ -114,15 +107,22 @@ body{background:#f0f7ff;color:#1a1a2e;font-family:'DM Sans',sans-serif;overflow-
       <h3 class="fd" style="font-size:18px;font-weight:900;color:#78350f;margin-bottom:8px;line-height:1.25;">Faça upgrade para o Anual e economize R$161</h3>
       <p style="font-size:13px;color:#92400e;line-height:1.6;margin-bottom:14px;">Você acabou de assinar por R$29,90/mês. Upgrade agora para o plano anual por apenas <strong>R$197</strong> e economize R$161,80 — 45% de desconto, exclusivo para quem acabou de assinar.</p>
 
-      <!-- COUNTDOWN -->
-      <p style="font-size:12px;color:#92400e;font-weight:600;margin-bottom:8px;">⏱ Oferta expira em:</p>
-      <div style="display:flex;gap:8px;margin-bottom:16px;">
-        <div class="cbox"><p class="fd" style="font-size:20px;font-weight:900;color:#78350f;" id="ctMin">14</p><p style="font-size:10px;color:#92400e;">min</p></div>
-        <div style="display:flex;align-items:center;padding-bottom:14px;"><p class="fd" style="font-size:20px;font-weight:900;color:#78350f;">:</p></div>
-        <div class="cbox"><p class="fd" style="font-size:20px;font-weight:900;color:#78350f;" id="ctSec">59</p><p style="font-size:10px;color:#92400e;">seg</p></div>
+      <!-- COUNTDOWN com persistência -->
+      <p style="font-size:12px;color:#92400e;font-weight:600;margin-bottom:12px;text-align:center;">⏱ Oferta expira em:</p>
+      <div style="display:flex;gap:12px;margin-bottom:20px;justify-content:center;align-items:center;">
+        <div class="cbox" style="min-width:72px;padding:12px 16px;">
+          <p class="fd" style="font-size:36px;font-weight:900;color:#78350f;line-height:1;" id="ctMin">14</p>
+          <p style="font-size:11px;color:#92400e;margin-top:3px;">min</p>
+        </div>
+        <p class="fd" style="font-size:32px;font-weight:900;color:#b45309;line-height:1;margin-bottom:16px;">:</p>
+        <div class="cbox" style="min-width:72px;padding:12px 16px;">
+          <p class="fd" style="font-size:36px;font-weight:900;color:#78350f;line-height:1;" id="ctSec">59</p>
+          <p style="font-size:11px;color:#92400e;margin-top:3px;">seg</p>
+        </div>
       </div>
 
-      <a href="#" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;background:#f59e0b;color:#fff;font-family:Outfit,sans-serif;font-weight:900;font-size:15px;height:52px;border-radius:12px;text-decoration:none;width:100%;font-synthesis:none;border:none;cursor:pointer;box-shadow:0 4px 16px rgba(245,158,11,0.4);">
+      <!-- ✅ Upgrade vai para checkout do plano anual (ajuste a URL conforme seu gateway) -->
+      <a href="https://checkout.lombar.vercel.app/anual-upgrade" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;background:#f59e0b;color:#fff;font-family:Outfit,sans-serif;font-weight:900;font-size:15px;height:52px;border-radius:12px;text-decoration:none;width:100%;font-synthesis:none;border:none;cursor:pointer;box-shadow:0 4px 16px rgba(245,158,11,0.4);">
         Sim! Quero o Anual por R$197
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
       </a>
@@ -178,15 +178,17 @@ body{background:#f0f7ff;color:#1a1a2e;font-family:'DM Sans',sans-serif;overflow-
     </div>
   </div>
 
-  <!-- COMPARTILHAR (referral social) -->
+  <!-- COMPARTILHAR -->
   <div class="a6" style="background:#fff;border:1px solid var(--border);border-radius:16px;padding:20px;margin-bottom:16px;">
     <p class="fd" style="font-size:14px;font-weight:800;color:var(--text);margin-bottom:4px;">Conhece alguém com dor nas costas?</p>
     <p style="font-size:13px;color:var(--muted);margin-bottom:14px;line-height:1.5;">Compartilhe o Lombar IA. Pode ser a melhor coisa que você faz por alguém hoje.</p>
     <div style="display:flex;gap:8px;">
-      <a href="https://wa.me/?text=Acabei+de+entrar+no+Lombar+IA+e+tô+adorando!+Eles+usam+IA+pra+acabar+com+dor+lombar+em+30+dias.+Você+precisa+conhecer%3A+https%3A%2F%2Flombar.ia" target="_blank" class="share-btn" style="background:#25D366;color:#fff;">
+      <!-- ✅ WhatsApp com URL correta do Vercel -->
+      <a href="https://wa.me/?text=Acabei+de+entrar+no+Lombar+IA+e+tô+adorando!+Eles+usam+IA+pra+acabar+com+dor+lombar+em+30+dias.+Você+precisa+conhecer%3A+https%3A%2F%2Flombar.vercel.app%2Flombar-landing.html" target="_blank" class="share-btn" style="background:#25D366;color:#fff;">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         WhatsApp
       </a>
+      <!-- ✅ Copy link com URL correta -->
       <button onclick="copyLink()" class="share-btn" style="background:var(--blue-dim);color:var(--blue);border:1px solid var(--blue-border);" id="copyBtn">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
         Copiar link
@@ -205,7 +207,8 @@ body{background:#f0f7ff;color:#1a1a2e;font-family:'DM Sans',sans-serif;overflow-
 
   <!-- BTN FINAL -->
   <div style="display:flex;justify-content:center;">
-    <a href="#" class="btn btn-p">
+    <!-- ✅ Mesmo link do app -->
+    <a href="https://app.lombar.ia" class="btn btn-p">
       Abrir o Lombar IA agora
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
     </a>
@@ -226,40 +229,48 @@ for(let i=0;i<55;i++){
   const el=document.createElement('div');
   el.className='cf';
   const size=6+Math.random()*9;
-  el.style.cssText=`
-    left:${Math.random()*100}vw;
-    width:${size}px;
-    height:${size}px;
-    background:${colors[Math.floor(Math.random()*colors.length)]};
-    border-radius:${shapes[Math.floor(Math.random()*shapes.length)]};
-    animation:confetti-fall ${1.8+Math.random()*2.2}s ${Math.random()*1.8}s linear forwards;
-  `;
+  el.style.cssText=`left:${Math.random()*100}vw;width:${size}px;height:${size}px;background:${colors[Math.floor(Math.random()*colors.length)]};border-radius:${shapes[Math.floor(Math.random()*shapes.length)]};animation:confetti-fall ${1.8+Math.random()*2.2}s ${Math.random()*1.8}s linear forwards;`;
   document.body.appendChild(el);
   setTimeout(()=>el.remove(), 5500);
 }
 
-// ── COUNTDOWN TIMER ───────────────────────────────────
-let total = 14*60 + 59;
+// ── COUNTDOWN TIMER com persistência ─────────────────
+// ✅ Timer persiste se o usuário recarregar a página
+const TIMER_KEY = 'lombObrigadoExpiry';
+const DURATION = 14 * 60 * 1000 + 59 * 1000; // 14:59
+
+let expiry = parseInt(sessionStorage.getItem(TIMER_KEY), 10);
+if (!expiry || isNaN(expiry)) {
+  expiry = Date.now() + DURATION;
+  sessionStorage.setItem(TIMER_KEY, expiry);
+}
+
 const minEl = document.getElementById('ctMin');
 const secEl = document.getElementById('ctSec');
-const timerInterval = setInterval(()=>{
-  if(total <= 0){
+
+function updateUpsellTimer() {
+  const remaining = Math.max(0, expiry - Date.now());
+  const totalSec = Math.floor(remaining / 1000);
+  const m = Math.floor(totalSec / 60);
+  const s = totalSec % 60;
+  if (minEl) minEl.textContent = String(m).padStart(2, '0');
+  if (secEl) secEl.textContent = String(s).padStart(2, '0');
+  if (remaining <= 0) {
     clearInterval(timerInterval);
     const card = document.getElementById('upsellCard');
-    if(card) card.style.display='none';
-    return;
+    if (card) card.style.display = 'none';
+    sessionStorage.removeItem(TIMER_KEY);
   }
-  total--;
-  const m = Math.floor(total/60);
-  const s = total%60;
-  minEl.textContent = String(m).padStart(2,'0');
-  secEl.textContent = String(s).padStart(2,'0');
-}, 1000);
+}
 
-// ── COPY LINK ─────────────────────────────────────────
+updateUpsellTimer();
+const timerInterval = setInterval(updateUpsellTimer, 1000);
+
+// ── COPY LINK ✅ URL correta do Vercel ────────────────
 function copyLink(){
-  navigator.clipboard.writeText('https://lombar.ia').then(()=>{
-    const btn = document.getElementById('copyBtn');
+  const url = 'https://lombar.vercel.app/lombar-landing.html';
+  navigator.clipboard.writeText(url).then(()=>{
+    const btn=document.getElementById('copyBtn');
     btn.innerHTML='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Copiado!';
     btn.style.background='rgba(22,163,74,0.1)';
     btn.style.color='var(--green)';
@@ -270,6 +281,14 @@ function copyLink(){
       btn.style.color='var(--blue)';
       btn.style.borderColor='var(--blue-border)';
     }, 2500);
+  }).catch(()=>{
+    // Fallback para browsers sem clipboard API
+    const el=document.createElement('textarea');
+    el.value=url;
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
   });
 }
 </script>
