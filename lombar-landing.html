@@ -83,7 +83,7 @@ section { padding: 56px 20px; }
 .faq-a { display:none; font-size:15px; color:var(--muted); line-height:1.75; padding-bottom:18px; }
 
 /* STICKY */
-.sticky { display:none; position:fixed; bottom:0; left:0; right:0; z-index:100; padding:12px 20px 24px; background:rgba(255,255,255,0.96); backdrop-filter:blur(14px); border-top:2px solid var(--border); box-shadow:0 -4px 20px rgba(0,0,0,0.08); }
+.sticky { display:none; position:fixed; bottom:0; left:0; right:0; z-index:100; padding:12px 20px 24px; background:rgba(255,255,255,0.96); backdrop-filter:blur(14px); border-top:2px solid var(--border); box-shadow:0 -4px 20px rgba(0,0,0,0.08); transition: opacity 0.3s; }
 @media(max-width:640px){ .sticky{display:block;} body{padding-bottom:86px;} }
 
 /* REVEAL */
@@ -100,6 +100,26 @@ section { padding: 56px 20px; }
 
 /* FEATURE ICON */
 .fi { width:48px;height:48px;min-width:48px;background:var(--blue-dim);border:1px solid var(--blue-border);border-radius:14px;display:flex;align-items:center;justify-content:center; }
+
+/* AVATAR INITIALS */
+.avatar { width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Outfit',sans-serif;font-weight:800;font-size:18px;color:#fff;font-synthesis:none; }
+
+/* PROGRESS CHART */
+.week-bar { display:flex;flex-direction:column;align-items:center;gap:6px;flex:1; }
+.week-bar-fill { width:100%;border-radius:6px 6px 0 0;transition:height 1s ease; }
+.week-label { font-size:11px;color:var(--muted);font-weight:600; }
+.week-value { font-size:12px;font-weight:700;color:var(--blue);font-family:'Outfit',sans-serif;font-synthesis:none; }
+
+/* FISIO COMPARE */
+.compare-row { display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-radius:10px;font-size:14px; }
+
+/* EMAIL INPUT */
+.email-input { width:100%;padding:14px 16px;border:2px solid var(--border);border-radius:12px;font-size:15px;font-family:'DM Sans',sans-serif;outline:none;transition:border-color 0.2s;background:#fff;color:var(--text); }
+.email-input:focus { border-color:var(--blue); }
+.email-input::placeholder { color:var(--muted2); }
+
+/* PAYMENT ICONS */
+.pay-icon { display:inline-flex;align-items:center;justify-content:center;background:#f9fafb;border:1px solid var(--border);border-radius:8px;padding:5px 10px;height:32px; }
 </style>
 </head>
 <body>
@@ -128,7 +148,7 @@ section { padding: 56px 20px; }
       <div style="display:flex;gap:2px;">
         <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
       </div>
-      <p style="font-size:14px;color:var(--muted);">+2.400 pessoas já aliviaram a dor</p>
+      <p style="font-size:14px;color:var(--muted);"><strong>87%</strong> sentem melhora em até 3 semanas</p>
     </div>
 
     <!-- CTA -->
@@ -172,8 +192,47 @@ section { padding: 56px 20px; }
   </div>
 </section>
 
+<!-- ===== PROGRESSO 30 DIAS ===== -->
+<section style="background:#fff;padding:40px 20px;">
+  <div class="si" style="text-align:center;">
+    <p class="badge rv" style="margin-bottom:12px;">Evolução real dos usuários</p>
+    <h2 class="title rv" style="font-size:clamp(22px,5vw,30px);">O que acontece com sua dor nos primeiros 30 dias</h2>
+    <p class="sub rv" style="margin-bottom:24px;font-size:15px;">Média de <strong>2.400 usuários</strong> que usaram o app por 4 semanas consecutivas</p>
+
+    <!-- BAR CHART -->
+    <div class="card rv" style="padding:24px 20px 16px;margin-bottom:16px;">
+      <div style="display:flex;align-items:flex-end;gap:8px;height:140px;margin-bottom:8px;" id="painChart">
+        <!-- bars rendered by JS -->
+      </div>
+      <div style="display:flex;justify-content:space-between;padding:0 4px;margin-bottom:16px;">
+        <span style="font-size:11px;color:var(--muted);">Semana 1</span>
+        <span style="font-size:11px;color:var(--muted);">Semana 2</span>
+        <span style="font-size:11px;color:var(--muted);">Semana 3</span>
+        <span style="font-size:11px;color:var(--muted);">Semana 4</span>
+      </div>
+      <p style="font-size:12px;color:var(--muted2);text-align:center;">Nível médio de dor (escala 0–10) · Quanto menor, melhor</p>
+    </div>
+
+    <!-- STATS ROW -->
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;" class="rv rv1">
+      <div class="card" style="padding:14px 10px;text-align:center;">
+        <p class="fd" style="font-size:26px;font-weight:900;color:var(--blue);line-height:1;font-synthesis:none;">-68%</p>
+        <p style="font-size:11px;color:var(--muted);margin-top:4px;line-height:1.4;">redução da dor em 30 dias</p>
+      </div>
+      <div class="card" style="padding:14px 10px;text-align:center;">
+        <p class="fd" style="font-size:26px;font-weight:900;color:var(--blue);line-height:1;font-synthesis:none;">87%</p>
+        <p style="font-size:11px;color:var(--muted);margin-top:4px;line-height:1.4;">sentem melhora em 3 sem.</p>
+      </div>
+      <div class="card" style="padding:14px 10px;text-align:center;">
+        <p class="fd" style="font-size:26px;font-weight:900;color:var(--blue);line-height:1;font-synthesis:none;">15min</p>
+        <p style="font-size:11px;color:var(--muted);margin-top:4px;line-height:1.4;">por dia é suficiente</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ===== DOR / IDENTIFICAÇÃO ===== -->
-<section class="divider" style="background:#fff;">
+<section class="divider" style="background:var(--bg);">
   <div class="si" style="text-align:center;">
     <h2 class="title rv">Você se identifica com alguma dessas situações?</h2>
     <p class="sub rv">Se respondeu sim para qualquer uma, o Lombar IA foi feito para você.</p>
@@ -207,7 +266,7 @@ section { padding: 56px 20px; }
 </section>
 
 <!-- ===== COMO FUNCIONA ===== -->
-<section class="divider" style="background:var(--bg);">
+<section class="divider" style="background:#fff;">
   <div class="si" style="text-align:center;">
     <p class="badge rv" style="margin-bottom:12px;">Como funciona</p>
     <h2 class="title rv">Simples. Guiado. Eficaz.</h2>
@@ -249,7 +308,7 @@ section { padding: 56px 20px; }
 </section>
 
 <!-- ===== FUNCIONALIDADES ===== -->
-<section class="divider" style="background:#fff;">
+<section class="divider" style="background:var(--bg);">
   <div class="si" style="text-align:center;">
     <h2 class="title rv">Tudo que você precisa para acabar com a dor</h2>
     <p class="sub rv">Desenvolvido especialmente para quem tem mais de 40 anos</p>
@@ -300,18 +359,18 @@ section { padding: 56px 20px; }
 </section>
 
 <!-- ===== DEPOIMENTOS ===== -->
-<section class="divider" style="background:var(--bg);">
+<section class="divider" style="background:#fff;">
   <div class="si" style="text-align:center;">
     <div class="rv" style="margin-bottom:24px;">
-      <div style="display:inline-flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--border);border-radius:14px;padding:14px 20px;">
+      <div style="display:inline-flex;align-items:center;gap:12px;background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:14px 20px;">
         <div>
           <div style="display:flex;gap:2px;margin-bottom:3px;"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
           <p class="fd" style="font-size:26px;font-weight:900;color:var(--text);line-height:1;font-synthesis:none;">4.9<span style="font-size:14px;color:var(--muted);font-weight:500;">/5</span></p>
         </div>
         <div style="width:1px;height:40px;background:var(--border);"></div>
         <div style="text-align:left;">
-          <p style="font-size:13px;font-weight:600;color:var(--text);line-height:1.3;">Mais de 2.400</p>
-          <p style="font-size:12px;color:var(--muted);">pessoas aliviaram a dor</p>
+          <p style="font-size:13px;font-weight:600;color:var(--text);line-height:1.3;">+2.400 usuários</p>
+          <p style="font-size:12px;color:var(--muted);">com dor lombar aliviada</p>
           <p style="font-size:11px;color:var(--blue);font-weight:600;margin-top:2px;">Resultado médio em 3 semanas</p>
         </div>
       </div>
@@ -320,9 +379,7 @@ section { padding: 56px 20px; }
     <div style="display:flex;flex-direction:column;gap:14px;">
       <div class="card rv" style="padding:20px;text-align:left;">
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;">
-          <div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#1d4ed8,#0891b2);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-            <span style="font-size:20px;">👨</span>
-          </div>
+          <img src="https://i.pravatar.cc/104?img=52" alt="Roberto C." style="width:52px;height:52px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid var(--border);"/>
           <div>
             <p class="fd" style="font-size:15px;font-weight:700;color:var(--text);line-height:1.2;font-synthesis:none;">Roberto C., 52 anos</p>
             <p style="font-size:12px;color:var(--blue);font-weight:600;margin-top:2px;">Hérnia de disco L4-L5</p>
@@ -331,13 +388,29 @@ section { padding: 56px 20px; }
         </div>
         <div class="stars" style="margin-bottom:10px;"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
         <p style="font-size:15px;color:#374151;line-height:1.75;">"Tinha dor há 8 anos e já desisti de tentar curar. Em 3 semanas usando o app, a dor baixou de 8 para 3. Hoje consigo trabalhar sentado sem tomar remédio todo dia."</p>
+        <!-- PAIN METER -->
+        <div style="margin-top:14px;background:var(--bg);border-radius:10px;padding:12px 14px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+            <p style="font-size:12px;color:var(--muted);font-weight:600;">Dor antes</p>
+            <p style="font-size:12px;color:var(--muted);font-weight:600;">Dor depois</p>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;">
+            <p class="fd" style="font-size:20px;font-weight:900;color:var(--red);font-synthesis:none;">8/10</p>
+            <div style="flex:1;height:6px;background:#fee2e2;border-radius:999px;overflow:hidden;">
+              <div style="height:100%;width:80%;background:var(--red);border-radius:999px;"></div>
+            </div>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--muted2)" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            <div style="flex:1;height:6px;background:#dcfce7;border-radius:999px;overflow:hidden;">
+              <div style="height:100%;width:30%;background:var(--green);border-radius:999px;"></div>
+            </div>
+            <p class="fd" style="font-size:20px;font-weight:900;color:var(--green);font-synthesis:none;">3/10</p>
+          </div>
+        </div>
       </div>
 
       <div class="card rv rv1" style="padding:20px;text-align:left;">
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;">
-          <div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#7c3aed,#ec4899);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-            <span style="font-size:20px;">👩</span>
-          </div>
+          <img src="https://i.pravatar.cc/104?img=47" alt="Marcia L." style="width:52px;height:52px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid var(--border);"/>
           <div>
             <p class="fd" style="font-size:15px;font-weight:700;color:var(--text);line-height:1.2;font-synthesis:none;">Marcia L., 47 anos</p>
             <p style="font-size:12px;color:var(--blue);font-weight:600;margin-top:2px;">Tensão muscular crônica</p>
@@ -346,13 +419,28 @@ section { padding: 56px 20px; }
         </div>
         <div class="stars" style="margin-bottom:10px;"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
         <p style="font-size:15px;color:#374151;line-height:1.75;">"O Modo SOS salvou minha vida! Quando dói muito, abro o app e em 10 minutos passa. Os exercícios são simples e seguros, nunca me machuquei."</p>
+        <div style="margin-top:14px;background:var(--bg);border-radius:10px;padding:12px 14px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+            <p style="font-size:12px;color:var(--muted);font-weight:600;">Dor antes</p>
+            <p style="font-size:12px;color:var(--muted);font-weight:600;">Dor depois</p>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;">
+            <p class="fd" style="font-size:20px;font-weight:900;color:var(--red);font-synthesis:none;">9/10</p>
+            <div style="flex:1;height:6px;background:#fee2e2;border-radius:999px;overflow:hidden;">
+              <div style="height:100%;width:90%;background:var(--red);border-radius:999px;"></div>
+            </div>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--muted2)" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            <div style="flex:1;height:6px;background:#dcfce7;border-radius:999px;overflow:hidden;">
+              <div style="height:100%;width:20%;background:var(--green);border-radius:999px;"></div>
+            </div>
+            <p class="fd" style="font-size:20px;font-weight:900;color:var(--green);font-synthesis:none;">2/10</p>
+          </div>
+        </div>
       </div>
 
       <div class="card rv rv2" style="padding:20px;text-align:left;">
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;">
-          <div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#059669,#0891b2);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-            <span style="font-size:20px;">👨‍💼</span>
-          </div>
+          <img src="https://i.pravatar.cc/104?img=15" alt="Carlos A." style="width:52px;height:52px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid var(--border);"/>
           <div>
             <p class="fd" style="font-size:15px;font-weight:700;color:var(--text);line-height:1.2;font-synthesis:none;">Carlos A., 55 anos</p>
             <p style="font-size:12px;color:var(--blue);font-weight:600;margin-top:2px;">Dor lombar por postura</p>
@@ -361,40 +449,62 @@ section { padding: 56px 20px; }
         </div>
         <div class="stars" style="margin-bottom:10px;"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
         <p style="font-size:15px;color:#374151;line-height:1.75;">"Fico 8h sentado trabalhando. Tentei fisioterapia, academia, nada resolvia. Com 30 dias de app já consigo trabalhar sem dor. Recomendo pra todo colega de escritório."</p>
+        <div style="margin-top:14px;background:var(--bg);border-radius:10px;padding:12px 14px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+            <p style="font-size:12px;color:var(--muted);font-weight:600;">Dor antes</p>
+            <p style="font-size:12px;color:var(--muted);font-weight:600;">Dor depois</p>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;">
+            <p class="fd" style="font-size:20px;font-weight:900;color:var(--red);font-synthesis:none;">7/10</p>
+            <div style="flex:1;height:6px;background:#fee2e2;border-radius:999px;overflow:hidden;">
+              <div style="height:100%;width:70%;background:var(--red);border-radius:999px;"></div>
+            </div>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--muted2)" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            <div style="flex:1;height:6px;background:#dcfce7;border-radius:999px;overflow:hidden;">
+              <div style="height:100%;width:10%;background:var(--green);border-radius:999px;"></div>
+            </div>
+            <p class="fd" style="font-size:20px;font-weight:900;color:var(--green);font-synthesis:none;">1/10</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ===== PRICING ===== -->
-<section id="pricing" class="divider" style="background:#fff;">
+<section id="pricing" class="divider" style="background:var(--bg);">
   <div class="si" style="text-align:center;">
     <p class="badge rv" style="margin-bottom:14px;">ESCOLHA SEU PLANO</p>
     <h2 class="title rv">Comece hoje e sinta a diferença</h2>
-    <p class="sub rv" style="margin-bottom:28px;">Teste grátis disponível. Cancele quando quiser.</p>
+    <p class="sub rv" style="margin-bottom:6px;">Teste grátis disponível. Cancele quando quiser.</p>
 
-    <!-- FREE -->
-    <div class="card rv" style="padding:22px;margin-bottom:12px;text-align:left;">
-      <p class="fd" style="font-size:13px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px;font-synthesis:none;">Gratuito</p>
-      <p class="fd" style="font-size:28px;font-weight:900;color:var(--text);margin-bottom:14px;font-synthesis:none;">R$0 <span style="font-size:14px;color:var(--muted);font-weight:400;">para sempre</span></p>
-      <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:18px;">
-        <div style="display:flex;align-items:center;gap:10px;"><span class="ck"><svg width="9" height="9" viewBox="0 0 24 24" stroke="var(--green)" stroke-width="3" fill="none"><polyline points="20 6 9 17 4 12"/></svg></span><span style="font-size:14px;color:var(--text);">Treino 3x por semana</span></div>
-        <div style="display:flex;align-items:center;gap:10px;"><span class="ck"><svg width="9" height="9" viewBox="0 0 24 24" stroke="var(--green)" stroke-width="3" fill="none"><polyline points="20 6 9 17 4 12"/></svg></span><span style="font-size:14px;color:var(--text);">2 usos do Modo SOS</span></div>
-        <div style="display:flex;align-items:center;gap:10px;"><span class="ck"><svg width="9" height="9" viewBox="0 0 24 24" stroke="var(--green)" stroke-width="3" fill="none"><polyline points="20 6 9 17 4 12"/></svg></span><span style="font-size:14px;color:var(--text);">Diário de dor</span></div>
-        <div style="display:flex;align-items:center;gap:10px;"><span class="xk"><svg width="8" height="8" viewBox="0 0 24 24" stroke="var(--red)" stroke-width="3" fill="none"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span><span style="font-size:14px;color:var(--muted2);">Treino todos os dias</span></div>
-        <div style="display:flex;align-items:center;gap:10px;"><span class="xk"><svg width="8" height="8" viewBox="0 0 24 24" stroke="var(--red)" stroke-width="3" fill="none"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span><span style="font-size:14px;color:var(--muted2);">Modo SOS ilimitado</span></div>
-        <div style="display:flex;align-items:center;gap:10px;"><span class="xk"><svg width="8" height="8" viewBox="0 0 24 24" stroke="var(--red)" stroke-width="3" fill="none"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span><span style="font-size:14px;color:var(--muted2);">Lembretes inteligentes</span></div>
+    <!-- FISIO COMPARE -->
+    <div class="card rv" style="padding:16px 18px;margin-bottom:24px;text-align:left;border-left:4px solid var(--blue);">
+      <p style="font-size:12px;color:var(--blue);font-weight:700;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:10px;">💡 Quanto você já gastou sem resultado?</p>
+      <div style="display:flex;flex-direction:column;gap:6px;">
+        <div class="compare-row" style="background:#fee2e2;">
+          <span style="font-size:14px;color:#374151;">1 sessão de fisioterapia</span>
+          <span class="fd" style="font-weight:800;color:var(--red);font-synthesis:none;">R$80–150</span>
+        </div>
+        <div class="compare-row" style="background:#fee2e2;">
+          <span style="font-size:14px;color:#374151;">Academia por 1 mês</span>
+          <span class="fd" style="font-weight:800;color:var(--red);font-synthesis:none;">R$80–200</span>
+        </div>
+        <div class="compare-row" style="background:#dcfce7;">
+          <span style="font-size:14px;color:#374151;font-weight:600;">Lombar IA — 1 mês inteiro</span>
+          <span class="fd" style="font-weight:900;color:var(--green);font-synthesis:none;">R$29,90</span>
+        </div>
       </div>
-      <a href="#" class="btn btn-outline" style="font-size:15px;height:50px;">Começar grátis</a>
+      <p style="font-size:12px;color:var(--muted);margin-top:10px;text-align:center;">Equivale a <strong>menos de 1 sessão de fisio</strong> para um mês completo de tratamento</p>
     </div>
 
     <!-- PREMIUM -->
-    <div class="price-card rv rv1" style="margin-bottom:12px;">
+    <div class="price-card rv" style="margin-bottom:12px;">
       <div style="position:absolute;top:14px;right:14px;background:rgba(255,255,255,0.2);border:1px solid rgba(255,255,255,0.3);padding:4px 12px;border-radius:999px;font-size:11px;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:0.06em;z-index:2;">Mais popular</div>
       <div style="position:relative;z-index:2;text-align:left;">
         <p class="fd" style="font-size:13px;font-weight:700;color:rgba(255,255,255,0.7);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px;font-synthesis:none;">Premium Mensal</p>
         <p class="fd" style="font-size:42px;font-weight:900;color:#fff;line-height:1;margin-bottom:4px;font-synthesis:none;">R$29,90<span style="font-size:16px;font-weight:500;color:rgba(255,255,255,0.7);">/mês</span></p>
-        <p style="font-size:13px;color:rgba(255,255,255,0.6);margin-bottom:20px;">Menos de R$1 por dia</p>
+        <p style="font-size:13px;color:rgba(255,255,255,0.6);margin-bottom:20px;">Menos de R$1 por dia · Menos que 1 sessão de fisio</p>
         <div style="display:flex;flex-direction:column;gap:9px;margin-bottom:22px;">
           <div style="display:flex;align-items:center;gap:10px;"><span style="color:#fff;font-size:16px;">✓</span><span style="font-size:14px;color:#fff;">Treino todos os dias</span></div>
           <div style="display:flex;align-items:center;gap:10px;"><span style="color:#fff;font-size:16px;">✓</span><span style="font-size:14px;color:#fff;">Modo SOS ilimitado</span></div>
@@ -412,7 +522,7 @@ section { padding: 56px 20px; }
     </div>
 
     <!-- ANUAL -->
-    <div class="card-b rv rv2" style="padding:22px;text-align:left;position:relative;overflow:hidden;">
+    <div class="card-b rv rv1" style="padding:22px;text-align:left;position:relative;overflow:hidden;margin-bottom:12px;">
       <div style="position:absolute;top:14px;right:14px;background:linear-gradient(135deg,#f59e0b,#ef4444);padding:4px 12px;border-radius:999px;font-size:11px;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:0.06em;">Economize 45%</div>
       <p class="fd" style="font-size:13px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px;font-synthesis:none;">Premium Anual</p>
       <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:4px;">
@@ -428,8 +538,68 @@ section { padding: 56px 20px; }
       <a href="#" class="btn" style="height:52px;font-size:15px;">Assinar por R$197/ano</a>
     </div>
 
+    <!-- FREE com campo de email -->
+    <details class="card rv rv2" style="padding:0;margin-bottom:12px;text-align:left;cursor:pointer;">
+      <summary style="padding:18px 20px;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+        <div>
+          <p class="fd" style="font-size:14px;font-weight:700;color:var(--text);font-synthesis:none;">Plano Gratuito — ver detalhes</p>
+          <p style="font-size:13px;color:var(--muted);">Funcionalidades limitadas · R$0</p>
+        </div>
+        <svg id="freeArrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+      </summary>
+      <div style="padding:0 20px 20px;">
+        <div style="border-top:1px solid var(--border);padding-top:16px;margin-bottom:16px;">
+          <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:18px;">
+            <div style="display:flex;align-items:center;gap:10px;"><span class="ck"><svg width="9" height="9" viewBox="0 0 24 24" stroke="var(--green)" stroke-width="3" fill="none"><polyline points="20 6 9 17 4 12"/></svg></span><span style="font-size:14px;color:var(--text);">Treino 3x por semana</span></div>
+            <div style="display:flex;align-items:center;gap:10px;"><span class="ck"><svg width="9" height="9" viewBox="0 0 24 24" stroke="var(--green)" stroke-width="3" fill="none"><polyline points="20 6 9 17 4 12"/></svg></span><span style="font-size:14px;color:var(--text);">2 usos do Modo SOS</span></div>
+            <div style="display:flex;align-items:center;gap:10px;"><span class="ck"><svg width="9" height="9" viewBox="0 0 24 24" stroke="var(--green)" stroke-width="3" fill="none"><polyline points="20 6 9 17 4 12"/></svg></span><span style="font-size:14px;color:var(--text);">Diário de dor</span></div>
+            <div style="display:flex;align-items:center;gap:10px;"><span class="xk"><svg width="8" height="8" viewBox="0 0 24 24" stroke="var(--red)" stroke-width="3" fill="none"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span><span style="font-size:14px;color:var(--muted2);">Treino todos os dias</span></div>
+            <div style="display:flex;align-items:center;gap:10px;"><span class="xk"><svg width="8" height="8" viewBox="0 0 24 24" stroke="var(--red)" stroke-width="3" fill="none"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span><span style="font-size:14px;color:var(--muted2);">Modo SOS ilimitado</span></div>
+            <div style="display:flex;align-items:center;gap:10px;"><span class="xk"><svg width="8" height="8" viewBox="0 0 24 24" stroke="var(--red)" stroke-width="3" fill="none"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span><span style="font-size:14px;color:var(--muted2);">Lembretes inteligentes</span></div>
+          </div>
+          <!-- EMAIL CAPTURE -->
+          <p style="font-size:13px;color:var(--muted);margin-bottom:10px;">Digite seu e-mail para criar sua conta gratuita:</p>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <input type="email" class="email-input" placeholder="seuemail@gmail.com" id="freeEmail"/>
+            <button onclick="handleFreeSignup()" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--blue);color:#fff;font-family:Outfit,sans-serif;font-weight:800;font-size:15px;padding:0 20px;height:50px;border-radius:12px;border:none;cursor:pointer;width:100%;font-synthesis:none;">
+              Começar grátis
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <!-- PAYMENT ICONS -->
+    <div class="rv" style="margin-bottom:18px;">
+      <p style="font-size:12px;color:var(--muted2);margin-bottom:10px;">Pagamento seguro com</p>
+      <div style="display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;">
+        <div class="pay-icon">
+          <svg width="42" height="14" viewBox="0 0 42 14" fill="none"><text x="0" y="11" font-family="Arial" font-weight="900" font-size="12" fill="#32BCAD">PIX</text></svg>
+        </div>
+        <div class="pay-icon">
+          <svg width="42" height="14" viewBox="0 0 42 14"><text x="0" y="11" font-family="Arial" font-weight="700" font-size="11" fill="#1A1F71">VISA</text></svg>
+        </div>
+        <div class="pay-icon" style="gap:3px;display:flex;align-items:center;">
+          <div style="width:14px;height:14px;background:#EB001B;border-radius:50%;opacity:0.9;"></div>
+          <div style="width:14px;height:14px;background:#F79E1B;border-radius:50%;opacity:0.9;margin-left:-6px;"></div>
+        </div>
+        <div class="pay-icon">
+          <svg width="36" height="14" viewBox="0 0 36 14"><text x="0" y="11" font-family="Arial" font-weight="700" font-size="9" fill="#003087">PayPal</text></svg>
+        </div>
+        <div class="pay-icon">
+          <svg width="20" height="16" viewBox="0 0 20 16"><rect width="20" height="16" rx="3" fill="#green"/><path d="M4 4h12v8H4z" fill="#E8F5E9" rx="1"/><path d="M4 7h12" stroke="#4CAF50" stroke-width="1.5"/></svg>
+          <span style="font-size:10px;color:var(--muted);font-weight:600;">Boleto</span>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:center;gap:6px;margin-top:10px;">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <p style="font-size:11px;color:var(--muted);">Ambiente 100% seguro · Dados criptografados</p>
+      </div>
+    </div>
+
     <!-- GARANTIA -->
-    <div class="guarantee rv" style="margin-top:18px;">
+    <div class="guarantee rv">
       <p style="font-size:24px;margin-bottom:8px;">🛡️</p>
       <p class="fd" style="font-size:16px;font-weight:800;color:var(--text);margin-bottom:6px;font-synthesis:none;">Garantia de 7 Dias</p>
       <p style="font-size:14px;color:var(--muted);line-height:1.7;">Se em 7 dias você não sentir melhora ou não gostar do app por qualquer motivo, devolvemos 100% do seu dinheiro. Sem perguntas.</p>
@@ -438,25 +608,32 @@ section { padding: 56px 20px; }
 </section>
 
 <!-- ===== FAQ ===== -->
-<section class="divider" style="background:var(--bg);">
+<section class="divider" style="background:#fff;">
   <div class="si" style="text-align:center;">
     <h2 class="title rv">Perguntas frequentes</h2>
     <div class="card rv" style="padding:0 20px;text-align:left;margin-top:24px;">
+
       <div class="faq-item" onclick="toggleFaq(this)"><div style="display:flex;justify-content:space-between;align-items:center;padding:18px 0;gap:12px;"><p class="faq-q fd" style="font-size:15px;font-weight:700;color:var(--text);font-synthesis:none;">Preciso saber fazer exercício?</p><svg class="faq-ch" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></div><p class="faq-a">Não precisa. Os exercícios são simples, com imagens e instruções passo a passo. Foram desenhados especialmente para quem tem pouca experiência com atividade física.</p></div>
+
       <div class="faq-item" onclick="toggleFaq(this)"><div style="display:flex;justify-content:space-between;align-items:center;padding:18px 0;gap:12px;"><p class="faq-q fd" style="font-size:15px;font-weight:700;color:var(--text);font-synthesis:none;">Funciona para hérnia de disco?</p><svg class="faq-ch" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></div><p class="faq-a">Sim. O app tem exercícios específicos para hérnia de disco, adaptando a intensidade e os movimentos conforme suas limitações informadas no cadastro.</p></div>
+
+      <div class="faq-item" onclick="toggleFaq(this)"><div style="display:flex;justify-content:space-between;align-items:center;padding:18px 0;gap:12px;"><p class="faq-q fd" style="font-size:15px;font-weight:700;color:var(--text);font-synthesis:none;">Isso substitui o médico ou fisioterapeuta?</p><svg class="faq-ch" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></div><p class="faq-a">Não substitui, mas complementa. O Lombar IA é um apoio diário para manutenção e alívio da dor. Se você tem uma condição grave ou dor muito intensa, recomendamos consultar um profissional de saúde. Muitos dos nossos usuários usam o app em paralelo com o tratamento indicado pelo médico.</p></div>
+
       <div class="faq-item" onclick="toggleFaq(this)"><div style="display:flex;justify-content:space-between;align-items:center;padding:18px 0;gap:12px;"><p class="faq-q fd" style="font-size:15px;font-weight:700;color:var(--text);font-synthesis:none;">Precisa de equipamentos?</p><svg class="faq-ch" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></div><p class="faq-a">Não. Todos os exercícios podem ser feitos em casa, com o espaço de um tapete. Sem equipamentos, sem academia, sem desculpa.</p></div>
+
       <div class="faq-item" onclick="toggleFaq(this)"><div style="display:flex;justify-content:space-between;align-items:center;padding:18px 0;gap:12px;"><p class="faq-q fd" style="font-size:15px;font-weight:700;color:var(--text);font-synthesis:none;">Em quanto tempo vejo resultado?</p><svg class="faq-ch" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></div><p class="faq-a">A maioria dos usuários relata melhora perceptível na dor entre 2 e 4 semanas. O Modo SOS já alivia em minutos. Os resultados dependem da consistência.</p></div>
+
       <div class="faq-item" style="border-bottom:none;" onclick="toggleFaq(this)"><div style="display:flex;justify-content:space-between;align-items:center;padding:18px 0;gap:12px;"><p class="faq-q fd" style="font-size:15px;font-weight:700;color:var(--text);font-synthesis:none;">Como funciona o cancelamento?</p><svg class="faq-ch" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></div><p class="faq-a">Cancele direto pelo app ou pelo e-mail de suporte, sem burocracia. Não cobramos mais nada a partir do cancelamento.</p></div>
     </div>
   </div>
 </section>
 
 <!-- ===== FINAL CTA ===== -->
-<section class="divider" style="background:linear-gradient(160deg,#1d4ed8,#0891b2);padding-top:64px;padding-bottom:80px;">
+<section id="finalCta" class="divider" style="background:linear-gradient(160deg,#1d4ed8,#0891b2);padding-top:64px;padding-bottom:80px;">
   <div class="si" style="text-align:center;">
     <p style="font-size:32px;margin-bottom:16px;">🎯</p>
     <h2 class="fd rv" style="font-weight:900;font-size:clamp(26px,7vw,40px);color:#fff;line-height:1.15;margin-bottom:14px;font-synthesis:none;">Sua dor nas costas tem solução. Comece hoje.</h2>
-    <p class="rv" style="font-size:16px;color:rgba(255,255,255,0.75);margin-bottom:28px;line-height:1.7;">Mais de 2.400 pessoas já aliviaram a dor lombar com o Lombar IA. Você pode ser o próximo.</p>
+    <p class="rv" style="font-size:16px;color:rgba(255,255,255,0.75);margin-bottom:28px;line-height:1.7;">Mais de 2.400 pessoas já aliviaram a dor lombar com o Lombar IA. Com menos de R$1 por dia — e garantia de 7 dias.</p>
     <div style="display:flex;justify-content:center;" class="rv">
       <a href="#pricing" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;background:#fff;color:var(--blue);font-family:Outfit,sans-serif;font-weight:900;font-size:17px;padding:0 28px;height:60px;border-radius:14px;text-decoration:none;width:100%;max-width:400px;font-synthesis:none;box-shadow:0 8px 30px rgba(0,0,0,0.2);">
         Começar agora gratuitamente
@@ -487,16 +664,102 @@ section { padding: 56px 20px; }
 </div>
 
 <script>
+// FAQ toggle
 function toggleFaq(el){
   const a=el.querySelector('.faq-a'),c=el.querySelector('.faq-ch'),open=a.style.display==='block';
   document.querySelectorAll('.faq-a').forEach(x=>x.style.display='none');
   document.querySelectorAll('.faq-ch').forEach(x=>x.style.transform='rotate(0deg)');
   if(!open){a.style.display='block';c.style.transform='rotate(180deg)';}
 }
+
+// Reveal on scroll
 const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('on');});},{threshold:0.1});
 document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
-const pr=document.getElementById('pricing'),sc=document.getElementById('sc');
-if(pr&&sc){new IntersectionObserver(e=>{e.forEach(x=>{sc.style.opacity=x.isIntersecting?'0':'1';sc.style.pointerEvents=x.isIntersecting?'none':'auto';sc.style.transition='opacity 0.3s';});},{threshold:0.2}).observe(pr);}
+
+// Sticky CTA — hide near pricing, show near final CTA, always show elsewhere
+const pr=document.getElementById('pricing');
+const fc=document.getElementById('finalCta');
+const sc=document.getElementById('sc');
+
+if(pr&&sc){
+  const pricingObs=new IntersectionObserver(e=>{
+    e.forEach(x=>{
+      if(x.isIntersecting){sc.style.opacity='0';sc.style.pointerEvents='none';}
+      else{sc.style.opacity='1';sc.style.pointerEvents='auto';}
+    });
+  },{threshold:0.15});
+  pricingObs.observe(pr);
+
+  if(fc){
+    const finalObs=new IntersectionObserver(e=>{
+      e.forEach(x=>{
+        if(x.isIntersecting){sc.style.opacity='0';sc.style.pointerEvents='none';}
+        else{
+          // Only show if pricing is also not visible
+          const prRect=pr.getBoundingClientRect();
+          if(!(prRect.top < window.innerHeight && prRect.bottom > 0)){
+            sc.style.opacity='1';sc.style.pointerEvents='auto';
+          }
+        }
+      });
+    },{threshold:0.1});
+    finalObs.observe(fc);
+  }
+}
+
+// Pain chart animation
+const chartData = [
+  {week:'Sem. 1', value:7.8, label:'7.8'},
+  {week:'Sem. 2', value:5.2, label:'5.2'},
+  {week:'Sem. 3', value:3.4, label:'3.4'},
+  {week:'Sem. 4', value:2.5, label:'2.5'},
+];
+const maxVal = 10;
+const chartEl = document.getElementById('painChart');
+const colors = ['#dc2626','#f59e0b','#3b82f6','#16a34a'];
+
+chartData.forEach((d,i)=>{
+  const pct = (d.value/maxVal)*100;
+  const div = document.createElement('div');
+  div.style.cssText='flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:4px;height:100%;';
+  div.innerHTML=`
+    <span style="font-family:Outfit,sans-serif;font-weight:900;font-size:13px;color:${colors[i]};font-synthesis:none;">${d.label}</span>
+    <div style="width:100%;background:${colors[i]};opacity:0.85;border-radius:6px 6px 0 0;height:0%;transition:height 1.2s cubic-bezier(.34,1.56,.64,1) ${i*0.15}s;" data-h="${pct}"></div>
+  `;
+  chartEl.appendChild(div);
+});
+
+// Animate bars on scroll
+const chartObs = new IntersectionObserver(e=>{
+  e.forEach(x=>{
+    if(x.isIntersecting){
+      document.querySelectorAll('#painChart [data-h]').forEach(bar=>{
+        bar.style.height=bar.dataset.h+'%';
+      });
+      chartObs.disconnect();
+    }
+  });
+},{threshold:0.3});
+chartObs.observe(chartEl);
+
+// Free signup
+function handleFreeSignup(){
+  const email=document.getElementById('freeEmail').value;
+  if(!email||!email.includes('@')){
+    document.getElementById('freeEmail').style.borderColor='var(--red)';
+    document.getElementById('freeEmail').focus();
+    return;
+  }
+  // In production: send to backend / Supabase
+  alert('Conta criada! Verifique seu e-mail: '+email);
+}
+
+// Details arrow toggle
+document.querySelector('details').addEventListener('toggle',function(e){
+  const arrow=document.getElementById('freeArrow');
+  if(this.open){arrow.style.transform='rotate(180deg)';}
+  else{arrow.style.transform='rotate(0deg)';}
+});
 </script>
 </body>
 </html>
