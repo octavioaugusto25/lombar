@@ -624,7 +624,7 @@ section { padding: 56px 20px; }
   <div style="display:flex;align-items:center;justify-content:center;gap:12px;font-size:12px;color:var(--muted2);">
     <a href="#" style="color:var(--muted2);text-decoration:none;">Política de Privacidade</a><span>·</span>
     <a href="#" style="color:var(--muted2);text-decoration:none;">Termos de Uso</a><span>·</span>
-    <a href="/cdn-cgi/l/email-protection#2c4f4342584d58436c4043414e4d5e02454d" style="color:var(--muted2);text-decoration:none;">Contato</a>
+    <a href="https://wa.me/5511999999999" target="_blank" style="color:var(--muted2);text-decoration:none;">Contato</a>
   </div>
 </footer>
 
@@ -636,7 +636,7 @@ section { padding: 56px 20px; }
   </a>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 // ── FAQ TOGGLE ────────────────────────────────────────
 function toggleFaq(el){
   const a=el.querySelector('.faq-a'),c=el.querySelector('.faq-ch'),open=a.style.display==='block';
@@ -810,11 +810,6 @@ document.querySelectorAll('a[href="lombar-obrigado.html"]').forEach(function(btn
 });
 </script>
 
-  <!-- =====================================================
-     INICIO DO WIDGET — copie tudo daqui até FIM DO WIDGET
-     e cole antes de </body> em cada uma das suas páginas.
-     Nenhuma dependência externa necessária.
-====================================================== -->
 <style>
 #lcWrap,#lcWrap *{box-sizing:border-box;margin:0;padding:0;}
 #lcWrap{font-family:'DM Sans',sans-serif;}
@@ -834,6 +829,12 @@ document.querySelectorAll('a[href="lombar-obrigado.html"]').forEach(function(btn
 #lcBtnTxt{font-family:'Outfit',sans-serif;font-weight:700;font-size:15px;white-space:nowrap;}
 #lcDot{position:absolute;top:-4px;right:-4px;width:18px;height:18px;background:#ef4444;border-radius:50%;border:2px solid #fff;animation:lcDotPop .4s 2s ease both;}
 @keyframes lcDotPop{from{transform:scale(0);}to{transform:scale(1);}}
+/* ✅ FIX: Mobile - sobe acima da sticky bar (86px) + vira só ícone */
+@media(max-width:640px){
+  #lcBtn{bottom:102px;padding:14px;}
+  #lcBtnTxt{display:none;}
+  #lcPanel{bottom:176px;}
+}
 #lcPanel{
   position:fixed;bottom:88px;right:20px;z-index:9999;
   width:360px;max-width:calc(100vw - 32px);
@@ -873,7 +874,8 @@ document.querySelectorAll('a[href="lombar-obrigado.html"]').forEach(function(btn
 .lcWrap.u{align-items:flex-end;}
 .lcCTA{display:flex;align-items:center;justify-content:center;gap:6px;background:linear-gradient(135deg,#1d4ed8,#0891b2);color:#fff;font-family:'Outfit',sans-serif;font-weight:800;font-size:14px;padding:11px 18px;border-radius:10px;text-decoration:none;margin-top:8px;text-align:center;}
 .lcCTA:hover{opacity:.9;}
-.lcWA{background:#25D366;}
+.lcWA{background:#25D366 !important;}
+.lcFree{background:#16a34a !important;}
 </style>
 
 <div id="lcWrap">
@@ -882,15 +884,14 @@ document.querySelectorAll('a[href="lombar-obrigado.html"]').forEach(function(btn
     <span id="lcBtnTxt">Falar com especialista</span>
     <div id="lcDot"></div>
   </button>
-
   <div id="lcPanel">
     <div id="lcHead">
-      <div id="lcAva">👩‍⚕️</div>
+      <div id="lcAva">&#x1F469;&#x200D;&#x2695;&#xFE0F;</div>
       <div id="lcHInfo">
-        <div id="lcHName">Ana · Lombar IA</div>
+        <div id="lcHName">Ana &middot; Lombar IA</div>
         <div id="lcHSub"><span class="lcGreen"></span> Online agora</div>
       </div>
-      <button id="lcClose" onclick="lcTog()">✕</button>
+      <button id="lcClose" onclick="lcTog()">&#x2715;</button>
     </div>
     <div id="lcMsgs"></div>
     <div id="lcType"><div class="lcD"></div><div class="lcD"></div><div class="lcD"></div></div>
@@ -899,172 +900,151 @@ document.querySelectorAll('a[href="lombar-obrigado.html"]').forEach(function(btn
 </div>
 
 <script>
-// =====================================================
-//  LOMBAR IA — CHAT DE RESPOSTAS FIXAS
-//  Sem IA, sem API. Edite os textos em LC_FAQ.
-//
-//  LC_URL  → página de checkout após clicar em assinar
-//  LC_WA   → link do seu WhatsApp Business
-// =====================================================
+const LC_URL  = 'lombar-obrigado.html';
+const LC_FREE = '#pricing';
+const LC_WA   = 'https://wa.me/5511999999999?text=Ol%C3%A1%2C+vi+o+Lombar+IA+e+gostaria+de+saber+mais.';
 
-const LC_URL = 'lombar-obrigado.html';
-const LC_WA  = 'https://wa.me/5511999999999?text=Ol%C3%A1%2C+vi+o+Lombar+IA+e+gostaria+de+saber+mais.';
-
-// ── Respostas ─────────────────────────────────────────
-// msg   → texto da Ana (use \n para quebrar linha)
-// opts  → botões que aparecem depois (devem ser chaves de LC_FAQ)
-// cta   → true mostra botão de assinar
-// wa    → true mostra botão do WhatsApp
 const LC_FAQ = {
-
-  inicio: {
-    msg: 'Oi! 😊 Sou a Ana, do Lombar IA.\nComo posso te ajudar?',
-    opts: ['Funciona para hérnia?','Qual o preço?','Como funciona?','É seguro?','Posso testar grátis?','Tenho mais de 60 anos'],
+  inicio:{
+    msg:'Oi! &#128522; Sou a Ana, do Lombar IA.\nComo posso te ajudar?',
+    opts:['Funciona para h\u00e9rnia?','Qual o pre\u00e7o?','Como funciona?','\u00c9 seguro?','Posso testar gr\u00e1tis?','Tenho mais de 60 anos'],
   },
-
-  'Funciona para hérnia?': {
-    msg: 'Sim! Você informa sua condição no cadastro e o plano é adaptado — sem movimentos que possam machucar.\n\nTemos usuários com hérnia L4-L5, L5-S1 e outras condições usando com ótimos resultados.',
-    opts: ['Tenho medo de piorar a dor','Qual o preço?','Posso testar grátis?'],
+  'Funciona para h\u00e9rnia?':{
+    msg:'Sim! Voc\u00ea informa sua condi\u00e7\u00e3o no cadastro e o plano \u00e9 adaptado \u2014 sem movimentos que possam machucar.\n\nTemos usu\u00e1rios com h\u00e9rnia L4-L5, L5-S1 usando com \u00f3timos resultados.',
+    opts:['Tenho medo de piorar a dor','Qual o pre\u00e7o?','Posso testar gr\u00e1tis?'],
   },
-
-  'Qual o preço?': {
-    msg: 'Três opções:\n\n🆓 Gratuito — 3 treinos/semana\n💙 Mensal — R$29,90/mês\n⭐ Anual — R$197/ano (R$16,42/mês)\n\nTodos os pagos têm garantia de 7 dias.',
-    opts: ['Vale a pena o mensal?','Posso testar grátis?','Quero assinar agora'],
+  'Qual o pre\u00e7o?':{
+    msg:'Tr\u00eas op\u00e7\u00f5es:\n\n&#x1F193; Gratuito \u2014 3 treinos/semana\n&#x1F499; Mensal \u2014 R$29,90/m\u00eas\n&#x2B50; Anual \u2014 R$197/ano (R$16,42/m\u00eas)\n\nTodos os pagos t\u00eam garantia de 7 dias.',
+    opts:['Vale a pena o mensal?','Posso testar gr\u00e1tis?','Quero assinar agora'],
   },
-
-  'Como funciona?': {
-    msg: '1️⃣ Você responde 5 perguntas sobre sua dor\n2️⃣ O app cria seu plano personalizado\n3️⃣ 15 minutos por dia, em casa\n\nSem equipamento. Sem academia.',
-    opts: ['Qual o preço?','É seguro?','Posso testar grátis?'],
+  'Como funciona?':{
+    msg:'1\uFE0F\u20E3 Voc\u00ea responde 5 perguntas sobre sua dor\n2\uFE0F\u20E3 O app cria seu plano personalizado\n3\uFE0F\u20E3 15 minutos por dia, em casa\n\nSem equipamento. Sem academia.',
+    opts:['Qual o pre\u00e7o?','\u00c9 seguro?','Posso testar gr\u00e1tis?'],
   },
-
-  'É seguro?': {
-    msg: 'Sim! São exercícios de baixo impacto para quem já tem dor.\n\n87% dos usuários sentem melhora em 3 semanas. Mais de 2.400 pessoas com hérnia e tensão muscular usam sem problema.',
-    opts: ['Funciona para hérnia?','Qual o preço?','Posso testar grátis?'],
+  '\u00c9 seguro?':{
+    msg:'Sim! S\u00e3o exerc\u00edcios de baixo impacto para quem j\u00e1 tem dor.\n\n87% dos usu\u00e1rios sentem melhora em 3 semanas. Mais de 2.400 pessoas com h\u00e9rnia e tens\u00e3o muscular usam sem problema.',
+    opts:['Funciona para h\u00e9rnia?','Qual o pre\u00e7o?','Posso testar gr\u00e1tis?'],
   },
-
-  'Posso testar grátis?': {
-    msg: 'Pode! O plano gratuito tem treino 3x por semana e 2 usos do Modo SOS.\n\nÉ suficiente para sentir na pele como funciona antes de assinar.',
-    opts: ['Quero testar grátis','Qual o preço?','Como funciona?'],
+  'Posso testar gr\u00e1tis?':{
+    msg:'Pode! O plano gratuito tem treino 3x por semana e 2 usos do Modo SOS.\n\n\u00c9 suficiente para sentir na pele como funciona antes de assinar.',
+    opts:['Quero testar gr\u00e1tis','Qual o pre\u00e7o?','Como funciona?'],
   },
-
-  'Tenho mais de 60 anos': {
-    msg: 'O app foi pensado exatamente para pessoas de 40 a 65 anos! 😊\n\nExercícios simples com imagens e instruções passo a passo. Sem nada difícil ou complicado.',
-    opts: ['É seguro?','Qual o preço?','Posso testar grátis?'],
+  'Tenho mais de 60 anos':{
+    msg:'O app foi pensado exatamente para pessoas de 40 a 65 anos! &#128522;\n\nExerc\u00edcios simples com imagens e instru\u00e7\u00f5es passo a passo. Sem nada dif\u00edcil.',
+    opts:['\u00c9 seguro?','Qual o pre\u00e7o?','Posso testar gr\u00e1tis?'],
   },
-
-  'Tenho medo de piorar a dor': {
-    msg: 'Entendo a preocupação — é muito comum!\n\nOs movimentos são suaves e seguros. Se sentir qualquer desconforto, o app ajusta o plano. E tem garantia de 7 dias.',
-    opts: ['Posso testar grátis?','Qual o preço?','Isso substitui o médico?'],
+  'Tenho medo de piorar a dor':{
+    msg:'Entendo a preocupa\u00e7\u00e3o \u2014 \u00e9 muito comum!\n\nOs movimentos s\u00e3o suaves e seguros. Se sentir qualquer desconforto, o app ajusta o plano. E tem garantia de 7 dias.',
+    opts:['Posso testar gr\u00e1tis?','Qual o pre\u00e7o?','Isso substitui o m\u00e9dico?'],
   },
-
-  'Isso substitui o médico?': {
-    msg: 'Não substitui — complementa.\n\nO Lombar IA é para o dia a dia entre as consultas. Vários dos nossos usuários usam junto com o tratamento médico.',
-    opts: ['Qual o preço?','Posso testar grátis?','Quero assinar agora'],
+  'Isso substitui o m\u00e9dico?':{
+    msg:'N\u00e3o substitui \u2014 complementa.\n\nO Lombar IA \u00e9 para o dia a dia entre as consultas. V\u00e1rios dos nossos usu\u00e1rios usam junto com o tratamento m\u00e9dico.',
+    opts:['Qual o pre\u00e7o?','Posso testar gr\u00e1tis?','Quero assinar agora'],
   },
-
-  'Vale a pena o mensal?': {
-    msg: '1 sessão de fisioterapia = R$80 a R$150.\nO mensal = R$29,90 pelos 30 dias completos.\n\nMenos que uma consulta, com garantia de 7 dias.',
-    opts: ['Quero assinar agora','Posso testar grátis?'],
-    cta: true,
+  'Vale a pena o mensal?':{
+    msg:'1 sess\u00e3o de fisioterapia = R$80 a R$150.\nO mensal = R$29,90 pelos 30 dias completos.\n\nMenos que uma consulta, com garantia de 7 dias.',
+    opts:['Quero assinar agora','Posso testar gr\u00e1tis?'],
+    cta:true,
   },
-
-  'Quero assinar agora': {
-    msg: 'Ótimo! 🎉 Lembre: você tem 7 dias de garantia — se não gostar por qualquer motivo, devolvemos tudo. Sem perguntas.',
-    opts: ['Ainda tenho dúvidas'],
-    cta: true,
+  'Quero assinar agora':{
+    msg:'\u00d3timo! &#127881; Voc\u00ea tem 7 dias de garantia \u2014 se n\u00e3o gostar, devolvemos tudo. Sem perguntas.',
+    opts:['Ainda tenho d\u00favidas'],
+    cta:true,
   },
-
-  'Quero testar grátis': {
-    msg: 'Perfeito! Crie sua conta gratuitamente e comece hoje. Se gostar, o upgrade é fácil.',
-    opts: ['Ainda tenho dúvidas'],
-    cta: true,
+  // ✅ FIX: teste gratuito agora usa ctaFree com link correto
+  'Quero testar gr\u00e1tis':{
+    msg:'Perfeito! \u00c9 s\u00f3 criar sua conta gratuita \u2014 sem cart\u00e3o de cr\u00e9dito. Se gostar, o upgrade \u00e9 f\u00e1cil.',
+    opts:['Ainda tenho d\u00favidas'],
+    ctaFree:true,
   },
-
-  'Ainda tenho dúvidas': {
-    msg: 'Sem problema! Me pergunte o que quiser, ou se preferir falar com alguém, é só chamar no WhatsApp. 😊',
-    opts: ['Funciona para hérnia?','Tenho mais de 60 anos','Falar no WhatsApp'],
+  'Ainda tenho d\u00favidas':{
+    msg:'Sem problema! Me pergunte o que quiser, ou se preferir falar com algu\u00e9m, \u00e9 s\u00f3 chamar no WhatsApp. &#128522;',
+    opts:['Funciona para h\u00e9rnia?','Tenho mais de 60 anos','Falar no WhatsApp'],
   },
-
-  'Falar no WhatsApp': {
-    msg: 'Claro! Clique abaixo e a gente continua por lá. Respondemos rápido! 📲',
-    opts: [],
-    wa: true,
+  'Falar no WhatsApp':{
+    msg:'Claro! Clique abaixo e a gente continua por l\u00e1. Respondemos r\u00e1pido! &#128242;',
+    opts:[],
+    wa:true,
   },
 };
 
-// ── Lógica ────────────────────────────────────────────
-let lcOpen = false;
-let lcStarted = false;
+let lcOpen=false,lcStarted=false;
 
-function lcTog() {
-  lcOpen = !lcOpen;
-  document.getElementById('lcDot').style.display = 'none';
-  document.getElementById('lcPanel').classList.toggle('open', lcOpen);
-  if (lcOpen && !lcStarted) { lcStarted = true; lcStep('inicio'); }
+function lcTog(){
+  lcOpen=!lcOpen;
+  document.getElementById('lcDot').style.display='none';
+  document.getElementById('lcPanel').classList.toggle('open',lcOpen);
+  if(lcOpen&&!lcStarted){lcStarted=true;lcStep('inicio');}
 }
 
-function lcStep(key, userLabel) {
-  const d = LC_FAQ[key];
-  if (!d) return;
-  if (userLabel) lcBubble('u', userLabel);
-  document.getElementById('lcQR').innerHTML = '';
-  const typ = document.getElementById('lcType');
+function lcStep(key,userLabel){
+  const d=LC_FAQ[key];
+  if(!d)return;
+  if(userLabel)lcBubble('u',userLabel);
+  document.getElementById('lcQR').innerHTML='';
+  const typ=document.getElementById('lcType');
   typ.classList.add('on');
   lcScroll();
-  setTimeout(() => {
+  setTimeout(()=>{
     typ.classList.remove('on');
-    const wrap = document.createElement('div');
-    wrap.className = 'lcWrap';
-    const b = document.createElement('div');
-    b.className = 'lcBub lcBot';
-    b.innerHTML = d.msg.replace(/\n/g,'<br>');
+    const wrap=document.createElement('div');
+    wrap.className='lcWrap';
+    const b=document.createElement('div');
+    b.className='lcBub lcBot';
+    b.innerHTML=d.msg.replace(/\n/g,'<br>');
     wrap.appendChild(b);
-    if (d.cta) {
-      const a = document.createElement('a');
-      a.className = 'lcCTA'; a.href = LC_URL;
-      a.innerHTML = '✅ Assinar agora — R$29,90/mês →';
+    if(d.cta){
+      const a=document.createElement('a');
+      a.className='lcCTA';a.href=LC_URL;
+      a.innerHTML='&#x2705; Assinar agora &mdash; R$29,90/m&ecirc;s &rarr;';
       wrap.appendChild(a);
     }
-    if (d.wa) {
-      const a = document.createElement('a');
-      a.className = 'lcCTA lcWA'; a.href = LC_WA; a.target = '_blank';
-      a.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> Falar no WhatsApp';
+    // ✅ CTA separado para plano gratuito
+    if(d.ctaFree){
+      const a=document.createElement('a');
+      a.className='lcCTA lcFree';a.href=LC_FREE;
+      a.onclick=()=>setTimeout(lcTog,100);
+      a.innerHTML='&#x1F193; Criar conta gratuita &rarr;';
+      wrap.appendChild(a);
+    }
+    if(d.wa){
+      const a=document.createElement('a');
+      a.className='lcCTA lcWA';a.href=LC_WA;a.target='_blank';
+      a.innerHTML='<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> Falar no WhatsApp';
       wrap.appendChild(a);
     }
     document.getElementById('lcMsgs').appendChild(wrap);
     lcScroll();
-    if (d.opts && d.opts.length) {
-      const qr = document.getElementById('lcQR');
-      d.opts.forEach(o => {
-        const btn = document.createElement('button');
-        btn.className = 'lcQ'; btn.textContent = o;
-        btn.onclick = () => lcStep(o, o);
+    if(d.opts&&d.opts.length){
+      const qr=document.getElementById('lcQR');
+      d.opts.forEach(o=>{
+        const btn=document.createElement('button');
+        btn.className='lcQ';btn.textContent=o;
+        btn.onclick=()=>lcStep(o,o);
         qr.appendChild(btn);
       });
     }
-  }, userLabel ? 700 : 450);
+  },userLabel?700:450);
 }
 
-function lcBubble(side, text) {
-  const wrap = document.createElement('div');
-  wrap.className = 'lcWrap' + (side === 'u' ? ' u' : '');
-  const b = document.createElement('div');
-  b.className = 'lcBub ' + (side === 'u' ? 'lcUsr' : 'lcBot');
-  b.textContent = text;
+function lcBubble(side,text){
+  const wrap=document.createElement('div');
+  wrap.className='lcWrap'+(side==='u'?' u':'');
+  const b=document.createElement('div');
+  b.className='lcBub '+(side==='u'?'lcUsr':'lcBot');
+  b.textContent=text;
   wrap.appendChild(b);
   document.getElementById('lcMsgs').appendChild(wrap);
   lcScroll();
 }
 
-function lcScroll() {
-  const el = document.getElementById('lcMsgs');
-  setTimeout(() => el.scrollTop = el.scrollHeight, 50);
+function lcScroll(){
+  const el=document.getElementById('lcMsgs');
+  setTimeout(()=>el.scrollTop=el.scrollHeight,50);
 }
 
-// Abre após 90s — calibrado para usuário 40-60+ que lê devagar
-setTimeout(() => { if (!lcOpen) lcTog(); }, 90000);
+setTimeout(()=>{if(!lcOpen)lcTog();},90000);
 </script>
-<!-- FIM DO WIDGET ===================================== -->
 
 </body>
 </html>
