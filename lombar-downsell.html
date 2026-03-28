@@ -8,104 +8,183 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;-webkit-tap-highlight-color:transparent;}
-body{background:#fff;color:#1a1a2e;font-family:'DM Sans',sans-serif;overflow-x:hidden;line-height:1.6;-webkit-font-smoothing:antialiased;}
-:root{--blue:#1d4ed8;--blue-light:#3b82f6;--blue-dim:rgba(29,78,216,0.08);--blue-border:rgba(29,78,216,0.2);--teal:#0891b2;--bg:#f0f7ff;--text:#1a1a2e;--muted:#6b7280;--muted2:#9ca3af;--border:#e5e7eb;--green:#16a34a;--red:#dc2626;}
+body{background:linear-gradient(160deg,#f0f7ff,#e8f4fd);color:#1a1a2e;font-family:'DM Sans',sans-serif;overflow-x:hidden;line-height:1.6;-webkit-font-smoothing:antialiased;min-height:100vh;}
+:root{--blue:#1d4ed8;--blue-dim:rgba(29,78,216,0.08);--blue-border:rgba(29,78,216,0.2);--teal:#0891b2;--bg:#f0f7ff;--text:#1a1a2e;--muted:#6b7280;--muted2:#9ca3af;--border:#e5e7eb;--green:#16a34a;--red:#dc2626;}
 .fd{font-family:'Outfit',sans-serif;font-synthesis:none;}
 .tg{background:linear-gradient(135deg,#1d4ed8,#0891b2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--blue);color:#fff;font-family:'Outfit',sans-serif;font-weight:800;font-size:17px;padding:0 28px;height:58px;border-radius:14px;border:none;cursor:pointer;text-decoration:none;white-space:nowrap;transition:transform 0.2s,box-shadow 0.2s;box-shadow:0 4px 20px rgba(29,78,216,0.35);width:100%;max-width:400px;font-synthesis:none;}
-.btn:active{transform:scale(0.97);}
-@keyframes pulse-btn{0%,100%{box-shadow:0 4px 20px rgba(29,78,216,0.35);}50%{box-shadow:0 4px 32px rgba(29,78,216,0.55);}}
-.btn-p{animation:pulse-btn 2.5s ease-in-out infinite;}
 .ck{width:22px;height:22px;min-width:22px;border-radius:50%;background:rgba(22,163,74,0.1);border:1px solid rgba(22,163,74,0.3);display:inline-flex;align-items:center;justify-content:center;}
 .star{color:#f59e0b;font-size:15px;}
+
+@keyframes pulse-btn{0%,100%{box-shadow:0 4px 20px rgba(29,78,216,0.35);}50%{box-shadow:0 4px 36px rgba(29,78,216,0.6);}}
 @keyframes fu{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
-.a1{animation:fu 0.5s ease both;}.a2{animation:fu 0.5s 0.1s ease both;}.a3{animation:fu 0.5s 0.2s ease both;}.a4{animation:fu 0.5s 0.3s ease both;}
-.tbox{background:rgba(29,78,216,0.1);border-radius:10px;padding:10px 14px;min-width:56px;text-align:center;border:1px solid var(--blue-border);}
+.a1{animation:fu 0.5s ease both;}
+.a2{animation:fu 0.5s 0.12s ease both;}
+.a3{animation:fu 0.5s 0.24s ease both;}
+.a4{animation:fu 0.5s 0.36s ease both;}
+.a5{animation:fu 0.5s 0.48s ease both;}
+
+/* timer boxes */
+.tbox{background:rgba(0,0,0,0.2);border:1px solid rgba(255,255,255,0.2);border-radius:10px;padding:10px 14px;min-width:60px;text-align:center;}
+
+/* pay icon */
+.pay-icon{display:inline-flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.2);border-radius:8px;padding:5px 10px;height:30px;}
 </style>
 </head>
-<body style="background:linear-gradient(160deg,#f0f7ff,#e8f4fd);min-height:100vh;">
+<body>
 
-<div style="max-width:480px;margin:0 auto;padding:32px 20px 60px;">
+<div style="max-width:480px;margin:0 auto;padding:32px 20px 64px;">
 
   <!-- HEADER -->
-  <div class="a1" style="text-align:center;margin-bottom:24px;">
-    <p class="fd" style="font-size:13px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px;font-synthesis:none;">Espere! Não vá embora ainda</p>
+  <div class="a1" style="text-align:center;margin-bottom:22px;">
+    <p class="fd" style="font-size:13px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;">Uma última coisa antes de ir</p>
     <div style="width:48px;height:4px;background:linear-gradient(90deg,#1d4ed8,#0891b2);border-radius:999px;margin:0 auto;"></div>
   </div>
 
   <!-- HERO MSG -->
-  <div class="a2" style="text-align:center;background:#fff;border-radius:20px;padding:28px 22px;margin-bottom:18px;box-shadow:0 4px 24px rgba(29,78,216,0.08);border:1px solid var(--border);">
-    <p style="font-size:32px;margin-bottom:12px;">😔</p>
-    <h1 class="fd" style="font-weight:900;font-size:clamp(24px,7vw,34px);color:var(--text);line-height:1.15;margin-bottom:12px;font-synthesis:none;">
-      Entendemos que o plano anual não é pra todo momento
+  <div class="a2" style="text-align:center;background:#fff;border-radius:20px;padding:28px 22px;margin-bottom:16px;box-shadow:0 4px 24px rgba(29,78,216,0.08);border:1px solid var(--border);">
+    <p style="font-size:30px;margin-bottom:12px;">💙</p>
+    <h1 class="fd" style="font-weight:900;font-size:clamp(22px,6vw,32px);color:var(--text);line-height:1.2;margin-bottom:12px;">
+      O anual não era o momento certo.<br>E tudo bem.
     </h1>
-    <p style="font-size:16px;color:var(--muted);line-height:1.7;">Por isso, temos uma oferta especial para você testar o <strong style="color:var(--blue);">Premium por 3 meses</strong> a um preço que cabe no bolso.</p>
+    <p style="font-size:15px;color:var(--muted);line-height:1.7;">Mas antes de ir, temos uma oferta que não aparece em nenhum outro lugar: <strong style="color:var(--blue);">3 meses de Premium por R$67</strong> — pagamento único, sem renovação.</p>
   </div>
 
-  <!-- OFERTA -->
-  <div class="a3" style="background:linear-gradient(135deg,#1d4ed8,#0891b2);border-radius:20px;padding:28px 22px;margin-bottom:18px;text-align:center;position:relative;overflow:hidden;">
-    <div style="position:absolute;top:-30px;right:-30px;width:130px;height:130px;background:rgba(255,255,255,0.08);border-radius:50%;"></div>
-    <p class="fd" style="font-size:12px;font-weight:700;color:rgba(255,255,255,0.7);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:6px;position:relative;z-index:2;font-synthesis:none;">Oferta especial · Válida agora</p>
-    <p style="font-size:14px;color:rgba(255,255,255,0.55);text-decoration:line-through;position:relative;z-index:2;">De R$89,70 (3 meses)</p>
-    <h2 class="fd" style="font-size:52px;font-weight:900;color:#fff;line-height:1;margin-bottom:4px;position:relative;z-index:2;font-synthesis:none;">R$67</h2>
-    <p style="font-size:14px;color:rgba(255,255,255,0.7);margin-bottom:6px;position:relative;z-index:2;">3 meses de acesso Premium completo</p>
-    <p style="font-size:13px;color:rgba(255,255,255,0.55);margin-bottom:24px;position:relative;z-index:2;">Equivale a R$22,33/mês · Pagamento único</p>
+  <!-- OFERTA PRINCIPAL -->
+  <div class="a3" style="background:linear-gradient(135deg,#1d4ed8,#0891b2);border-radius:20px;padding:28px 22px;margin-bottom:16px;position:relative;overflow:hidden;">
+    <div style="position:absolute;top:-30px;right:-30px;width:130px;height:130px;background:rgba(255,255,255,0.07);border-radius:50%;"></div>
+    <div style="position:absolute;bottom:-20px;left:-20px;width:80px;height:80px;background:rgba(255,255,255,0.05);border-radius:50%;"></div>
 
-    <!-- TIMER -->
-    <p style="font-size:12px;color:rgba(255,255,255,0.6);margin-bottom:10px;position:relative;z-index:2;">Essa oferta expira em:</p>
-    <div style="display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:22px;position:relative;z-index:2;">
-      <div class="tbox" style="background:rgba(0,0,0,0.2);border-color:rgba(255,255,255,0.2);">
-        <div id="th" class="fd" style="font-size:24px;font-weight:800;color:#fff;line-height:1;font-synthesis:none;">00</div>
-        <div style="font-size:9px;color:rgba(255,255,255,0.5);text-transform:uppercase;margin-top:2px;">Min</div>
-      </div>
-      <span style="font-size:20px;font-weight:900;color:rgba(255,255,255,0.4);margin-bottom:12px;">:</span>
-      <div class="tbox" style="background:rgba(0,0,0,0.2);border-color:rgba(255,255,255,0.2);">
-        <div id="ts" class="fd" style="font-size:24px;font-weight:800;color:#fff;line-height:1;font-synthesis:none;">15</div>
-        <div style="font-size:9px;color:rgba(255,255,255,0.5);text-transform:uppercase;margin-top:2px;">Seg</div>
-      </div>
+    <!-- BADGE -->
+    <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.25);border-radius:999px;padding:4px 12px;margin-bottom:16px;position:relative;z-index:2;">
+      <span style="font-size:10px;">🔒</span>
+      <p class="fd" style="font-size:11px;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:0.1em;">Exclusivo · Só aparece aqui</p>
     </div>
 
-    <a href="#" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;background:#fff;color:var(--blue);font-family:Outfit,sans-serif;font-weight:900;font-size:17px;padding:0 28px;height:58px;border-radius:12px;text-decoration:none;width:100%;font-synthesis:none;position:relative;z-index:2;">
-      Sim, quero os 3 meses por R$67
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-    </a>
-    <p style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:10px;position:relative;z-index:2;">Pagamento único · Sem renovação automática</p>
+    <div style="position:relative;z-index:2;">
+      <p style="font-size:13px;color:rgba(255,255,255,0.5);text-decoration:line-through;margin-bottom:2px;">De R$89,70 (3x R$29,90)</p>
+      <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:4px;">
+        <h2 class="fd" style="font-size:56px;font-weight:900;color:#fff;line-height:1;">R$67</h2>
+        <div>
+          <p style="font-size:13px;color:rgba(255,255,255,0.6);line-height:1.3;">pagamento<br>único</p>
+        </div>
+      </div>
+      <p style="font-size:13px;color:rgba(255,255,255,0.65);margin-bottom:6px;">3 meses completos · R$22,33/mês · Sem renovação</p>
+
+      <!-- SAVING PILL -->
+      <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(245,158,11,0.25);border:1px solid rgba(245,158,11,0.4);border-radius:999px;padding:5px 14px;margin-bottom:22px;">
+        <span style="font-size:14px;">💰</span>
+        <p class="fd" style="font-size:12px;font-weight:800;color:#fde68a;">Você economiza R$22,70 agora</p>
+      </div>
+
+      <!-- TIMER -->
+      <p style="font-size:12px;color:rgba(255,255,255,0.55);margin-bottom:10px;">⏱ Oferta disponível por:</p>
+      <div style="display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:22px;">
+        <div class="tbox">
+          <p class="fd" id="th" style="font-size:26px;font-weight:900;color:#fff;line-height:1;">15</p>
+          <p style="font-size:9px;color:rgba(255,255,255,0.5);text-transform:uppercase;margin-top:2px;">min</p>
+        </div>
+        <p class="fd" style="font-size:22px;font-weight:900;color:rgba(255,255,255,0.4);padding-bottom:14px;">:</p>
+        <div class="tbox">
+          <p class="fd" id="ts" style="font-size:26px;font-weight:900;color:#fff;line-height:1;">00</p>
+          <p style="font-size:9px;color:rgba(255,255,255,0.5);text-transform:uppercase;margin-top:2px;">seg</p>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <a href="#" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;background:#fff;color:var(--blue);font-family:Outfit,sans-serif;font-weight:900;font-size:17px;padding:0 28px;height:58px;border-radius:14px;text-decoration:none;width:100%;font-synthesis:none;box-shadow:0 4px 20px rgba(0,0,0,0.15);animation:pulse-btn 2.5s ease-in-out infinite;">
+        Sim, quero os 3 meses por R$67
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </a>
+      <p style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:10px;text-align:center;">Sem renovação automática · Pagamento único</p>
+
+      <!-- PAYMENT ICONS -->
+      <div style="display:flex;align-items:center;justify-content:center;gap:8px;margin-top:14px;flex-wrap:wrap;">
+        <div class="pay-icon"><p style="font-size:11px;color:#fff;font-weight:800;letter-spacing:0.05em;">PIX</p></div>
+        <div class="pay-icon"><p style="font-size:11px;color:#fff;font-weight:700;">VISA</p></div>
+        <div class="pay-icon" style="gap:3px;display:flex;padding:5px 8px;">
+          <div style="width:13px;height:13px;background:#EB001B;border-radius:50%;opacity:0.9;"></div>
+          <div style="width:13px;height:13px;background:#F79E1B;border-radius:50%;opacity:0.9;margin-left:-5px;"></div>
+        </div>
+        <div class="pay-icon"><p style="font-size:10px;color:#fff;font-weight:600;">Boleto</p></div>
+      </div>
+    </div>
   </div>
 
-  <!-- O QUE INCLUI -->
-  <div class="a4" style="background:#fff;border-radius:16px;padding:22px;margin-bottom:16px;border:1px solid var(--border);">
-    <p class="fd" style="font-size:14px;font-weight:800;color:var(--text);margin-bottom:14px;font-synthesis:none;">O que você recebe nos 3 meses:</p>
-    <div style="display:flex;flex-direction:column;gap:10px;">
+  <!-- COMPARAÇÃO -->
+  <div class="a4" style="background:#fff;border-radius:16px;padding:20px;margin-bottom:14px;border:1px solid var(--border);">
+    <p class="fd" style="font-size:14px;font-weight:800;color:var(--text);margin-bottom:14px;">O que você recebe nos 3 meses:</p>
+    <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:16px;">
       <div style="display:flex;align-items:center;gap:12px;"><span class="ck"><svg width="9" height="9" viewBox="0 0 24 24" stroke="var(--green)" stroke-width="3" fill="none"><polyline points="20 6 9 17 4 12"/></svg></span><span style="font-size:14px;color:var(--text);">Treino todo dia, personalizado pela IA</span></div>
-      <div style="display:flex;align-items:center;gap:12px;"><span class="ck"><svg width="9" height="9" viewBox="0 0 24 24" stroke="var(--green)" stroke-width="3" fill="none"><polyline points="20 6 9 17 4 12"/></svg></span><span style="font-size:14px;color:var(--text);">Modo SOS ilimitado</span></div>
+      <div style="display:flex;align-items:center;gap:12px;"><span class="ck"><svg width="9" height="9" viewBox="0 0 24 24" stroke="var(--green)" stroke-width="3" fill="none"><polyline points="20 6 9 17 4 12"/></svg></span><span style="font-size:14px;color:var(--text);">Modo SOS ilimitado — alívio em minutos</span></div>
       <div style="display:flex;align-items:center;gap:12px;"><span class="ck"><svg width="9" height="9" viewBox="0 0 24 24" stroke="var(--green)" stroke-width="3" fill="none"><polyline points="20 6 9 17 4 12"/></svg></span><span style="font-size:14px;color:var(--text);">Lembretes inteligentes</span></div>
       <div style="display:flex;align-items:center;gap:12px;"><span class="ck"><svg width="9" height="9" viewBox="0 0 24 24" stroke="var(--green)" stroke-width="3" fill="none"><polyline points="20 6 9 17 4 12"/></svg></span><span style="font-size:14px;color:var(--text);">Relatório mensal de evolução</span></div>
       <div style="display:flex;align-items:center;gap:12px;"><span class="ck"><svg width="9" height="9" viewBox="0 0 24 24" stroke="var(--green)" stroke-width="3" fill="none"><polyline points="20 6 9 17 4 12"/></svg></span><span style="font-size:14px;color:var(--text);">Conteúdo educativo completo</span></div>
     </div>
+
+    <!-- PRICE COMPARE TABLE -->
+    <div style="border-top:1px solid var(--border);padding-top:14px;">
+      <p style="font-size:12px;color:var(--muted2);margin-bottom:8px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;">Compare:</p>
+      <div style="display:flex;flex-direction:column;gap:6px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 12px;background:#fee2e2;border-radius:8px;">
+          <span style="font-size:13px;color:#374151;">1 sessão de fisioterapia</span>
+          <span class="fd" style="font-weight:800;font-size:13px;color:var(--red);">R$80–150</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 12px;background:#fee2e2;border-radius:8px;">
+          <span style="font-size:13px;color:#374151;">3 meses normais (R$29,90×3)</span>
+          <span class="fd" style="font-weight:800;font-size:13px;color:var(--red);">R$89,70</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 12px;background:#dcfce7;border-radius:8px;border:1px solid rgba(22,163,74,0.2);">
+          <span style="font-size:13px;color:#374151;font-weight:600;">✨ Esta oferta — 3 meses</span>
+          <span class="fd" style="font-weight:900;font-size:14px;color:var(--green);">R$67</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DEPOIMENTO RÁPIDO -->
+  <div class="a4" style="background:#fff;border-radius:16px;padding:18px;margin-bottom:14px;border:1px solid var(--border);">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+      <img src="https://i.pravatar.cc/80?img=47" alt="Marcia" style="width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid var(--border);flex-shrink:0;"/>
+      <div>
+        <p class="fd" style="font-size:14px;font-weight:700;color:var(--text);">Marcia L., 47 anos</p>
+        <div style="display:flex;gap:2px;"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+      </div>
+    </div>
+    <p style="font-size:14px;color:#374151;line-height:1.7;font-style:italic;">"Estava na dúvida se valia a pena. Resolvi testar por 3 meses. Na segunda semana já sentia diferença. Hoje não passo sem o app."</p>
   </div>
 
   <!-- GARANTIA -->
-  <div style="background:linear-gradient(135deg,rgba(22,163,74,0.06),rgba(22,163,74,0.02));border:2px solid rgba(22,163,74,0.2);border-radius:14px;padding:18px;margin-bottom:20px;text-align:center;">
+  <div class="a5" style="background:linear-gradient(135deg,rgba(22,163,74,0.06),rgba(22,163,74,0.02));border:2px solid rgba(22,163,74,0.2);border-radius:14px;padding:18px;margin-bottom:20px;text-align:center;">
     <p style="font-size:22px;margin-bottom:6px;">🛡️</p>
-    <p class="fd" style="font-size:14px;font-weight:800;color:var(--text);margin-bottom:4px;font-synthesis:none;">Garantia de 7 dias</p>
-    <p style="font-size:13px;color:var(--muted);line-height:1.6;">Se não gostar, devolvemos 100% do valor. Sem perguntas.</p>
+    <p class="fd" style="font-size:14px;font-weight:800;color:var(--text);margin-bottom:4px;">Garantia de 7 dias</p>
+    <p style="font-size:13px;color:var(--muted);line-height:1.6;">Se não gostar por qualquer motivo, devolvemos 100% do valor. Sem perguntas. Sem burocracia.</p>
   </div>
 
-  <!-- RECUSAR -->
-  <div style="text-align:center;">
-    <a href="obrigado.html" style="font-size:13px;color:var(--muted2);text-decoration:underline;cursor:pointer;">Não, prefiro perder essa oferta e continuar com o plano gratuito</a>
+  <!-- RECUSAR — sem texto punitivo -->
+  <div class="a5" style="text-align:center;">
+    <a href="obrigado.html" style="font-size:13px;color:var(--muted2);text-decoration:none;border-bottom:1px solid var(--border);padding-bottom:2px;cursor:pointer;">Continuar com o plano gratuito</a>
   </div>
+
 </div>
 
 <script>
-let total=15*60;
-function tick(){
-  const m=Math.floor(total/60),s=total%60;
-  document.getElementById('th').textContent=String(m).padStart(2,'0');
-  document.getElementById('ts').textContent=String(s).padStart(2,'0');
-  if(total>0)total--;
+// Timer: inicia em 15:00 e conta regressivamente
+let total = 15 * 60;
+
+function tick() {
+  const m = Math.floor(total / 60);
+  const s = total % 60;
+  document.getElementById('th').textContent = String(m).padStart(2, '0');
+  document.getElementById('ts').textContent = String(s).padStart(2, '0');
+  if (total > 0) total--;
+  else {
+    // Oferta expirada — esconde card de oferta, mostra mensagem
+    document.querySelector('[data-offer]') && (document.querySelector('[data-offer]').style.display = 'none');
+  }
 }
-tick();setInterval(tick,1000);
+
+tick();
+setInterval(tick, 1000);
 </script>
 </body>
 </html>
