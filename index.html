@@ -20,6 +20,18 @@
   async
   defer
 ></script>
+
+
+  <script>
+function goCheckout(url) {
+  console.log("🔥 Clique no checkout");
+
+  // dá tempo pro pixel enviar evento
+  setTimeout(function () {
+    window.location.href = url;
+  }, 1000); // 1 segundo
+}
+</script>
 <!-- End Meta Pixel Code -->
   
   
@@ -556,7 +568,8 @@ section { padding: 56px 20px; }
 
         <button 
           class="btn buy-btn"
-          onclick="window.location.href='https://pay.cakto.com.br/9i3dh6m_863810'" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;background:#fff;color:var(--blue);font-family:Outfit,sans-serif;font-weight:900;font-size:16px;padding:0 28px;height:56px;border-radius:12px;text-decoration:none;width:100%;font-synthesis:none;">
+          onclick="goCheckout('https://pay.cakto.com.br/9i3dh6m_863810')"
+          style="display:inline-flex;align-items:center;justify-content:center;gap:8px;background:#fff;color:var(--blue);font-family:Outfit,sans-serif;font-weight:900;font-size:16px;padding:0 28px;height:56px;border-radius:12px;text-decoration:none;width:100%;font-synthesis:none;">
           Assinar por R$29,90/mês
         </button>
         <!-- ✅ LINK CORRIGIDO: vai para a página de obrigado/confirmação -->
@@ -586,10 +599,12 @@ section { padding: 56px 20px; }
 
       <button 
         class="btn buy-btn"
+        onclick="goCheckout('https://pay.cakto.com.br/9i3dh6m_863810')"
         onclick="window.location.href='https://pay.cakto.com.br/bzq47o5'" style="height:52px;font-size:15px;">
         Assinar por R$197/ano
       </button>
     </div>
+
 
     <!-- FREE -->
     <details class="card rv rv2" style="padding:0;margin-bottom:12px;text-align:left;cursor:pointer;">
