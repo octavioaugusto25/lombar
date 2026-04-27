@@ -45,6 +45,23 @@
   async
   defer
 ></script>
+
+  <script>
+function goCheckout() {
+  console.log("🔥 Clique no checkout detectado");
+
+  if (typeof fbq === "function") {
+    fbq("track", "InitiateCheckout");
+    console.log("✅ InitiateCheckout enviado para o Meta");
+  } else {
+    console.log("❌ fbq não carregou");
+  }
+
+  setTimeout(function() {
+    window.location.href = "https://pay.cakto.com.br/9i3dh6m_863810";
+  }, 500);
+}
+</script>
 <!-- End Meta Pixel Code -->
 
 <!-- End Meta Pixel Code -->
@@ -551,6 +568,7 @@ section { padding: 56px 20px; }
 
         <button 
           class="btn buy-btn" 
+          onclick="goCheckout()"
           onclick="window.location.href='https://pay.cakto.com.br/9i3dh6m_863810'" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;background:#fff;color:var(--blue);font-family:Outfit,sans-serif;font-weight:900;font-size:16px;padding:0 28px;height:56px;border-radius:12px;text-decoration:none;width:100%;font-synthesis:none;">
           Assinar por R$29,90/mês
         </button>
@@ -581,6 +599,7 @@ section { padding: 56px 20px; }
 
       <button 
         class="btn buy-btn" 
+        onclick="goCheckout()"
         onclick="window.location.href='https://pay.cakto.com.br/bzq47o5'" style="height:52px;font-size:15px;">
         Assinar por R$197/ano
       </button>
