@@ -5,12 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
 <title>Lombar IA — Fim da Dor nas Costas</title>
 <script>
-  // ALTERE O LINK PARA A PÁGINA QUE QUISER MOSTRAR QUANDO O USUÁRIO TENTAR SAIR
   const link = 'https://lombar.vercel.app/lombar-downsell.html';
 
   function setBackRedirect(url) {
     let urlBackRedirect = url;
-    urlBackRedirect = urlBackRedirect =
+    urlBackRedirect =
       urlBackRedirect.trim() +
       (urlBackRedirect.indexOf('?') > 0 ? '&' : '?') +
       document.location.search.replace('?', '').toString();
@@ -20,7 +19,6 @@
     history.pushState({}, '', location.href);
 
     window.addEventListener('popstate', () => {
-      console.log('onpopstate', urlBackRedirect);
       setTimeout(() => {
         location.href = urlBackRedirect;
       }, 1);
@@ -29,12 +27,13 @@
 
   setBackRedirect(link);
 </script>
+
 <script>
   window.pixelId = "69ee5f8f08a28267f2f5ed4e";
   var a = document.createElement("script");
-  a.setAttribute("async", "");
-  a.setAttribute("defer", "");
-  a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+  a.async = true;
+  a.defer = true;
+  a.src = "https://cdn.utmify.com.br/scripts/pixel/pixel.js";
   document.head.appendChild(a);
 </script>
 
@@ -46,20 +45,13 @@
   defer
 ></script>
 
-  <script>
+<script>
 function goCheckout() {
   console.log("🔥 Clique no checkout detectado");
 
-  if (typeof fbq === "function") {
-    fbq("track", "InitiateCheckout");
-    console.log("✅ InitiateCheckout enviado para o Meta");
-  } else {
-    console.log("❌ fbq não carregou");
-  }
-
   setTimeout(function() {
     window.location.href = "https://pay.cakto.com.br/9i3dh6m_863810";
-  }, 500);
+  }, 300);
 }
 </script>
 <!-- End Meta Pixel Code -->
