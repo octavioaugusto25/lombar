@@ -5,59 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
 <title>Lombar IA — Fim da Dor nas Costas</title>
 <script>
-  const link = 'https://lombar.vercel.app/lombar-downsell.html';
-
-  function setBackRedirect(url) {
-    let urlBackRedirect = url;
-    urlBackRedirect =
-      urlBackRedirect.trim() +
-      (urlBackRedirect.indexOf('?') > 0 ? '&' : '?') +
-      document.location.search.replace('?', '').toString();
-
-    history.pushState({}, '', location.href);
-    history.pushState({}, '', location.href);
-    history.pushState({}, '', location.href);
-
-    window.addEventListener('popstate', () => {
-      setTimeout(() => {
-        location.href = urlBackRedirect;
-      }, 1);
-    });
-  }
-
-  setBackRedirect(link);
-</script>
-
-
-
-<script>
-function goCheckout() {
-  console.log("🔥 Clique no checkout detectado");
-
-  setTimeout(function() {
-    window.location.href = "https://pay.cakto.com.br/9i3dh6m_863810";
-  }, 300);
-}
-</script>
-<!-- End Meta Pixel Code -->
-
-<script>
-  window.pixelId = "69ee5f8f08a28267f2f5ed4e";
+  window.pixelId = "69ef57ef0236900abd5df9b5";
   var a = document.createElement("script");
-  a.async = true;
-  a.defer = true;
-  a.src = "https://cdn.utmify.com.br/scripts/pixel/pixel.js";
+  a.setAttribute("async", "");
+  a.setAttribute("defer", "");
+  a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
   document.head.appendChild(a);
 </script>
-
-<script
+  
+  <script
   src="https://cdn.utmify.com.br/scripts/utms/latest.js"
   data-utmify-prevent-xcod-sck
   data-utmify-prevent-subids
   async
   defer
 ></script>
-  
 <!-- End Meta Pixel Code -->
 <!-- SEO / Social -->
 <meta name="description" content="Nossa IA cria um plano de exercícios personalizado para sua dor lombar e monitora sua evolução dia a dia. Sem academia. Sem equipamentos."/>
