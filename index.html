@@ -188,7 +188,15 @@ section { padding: 56px 20px; }
     <a href="lombar-downsell.html" style="display:inline-flex;align-items:center;justify-content:center;background:var(--blue-dim);color:var(--blue);font-family:Outfit,sans-serif;font-weight:700;font-size:14px;height:46px;border-radius:12px;text-decoration:none;width:100%;margin-bottom:12px;border:1px solid var(--blue-border);">
       Ver oferta especial antes de sair
     </a>
-    <button onclick="document.getElementById('exitOverlay').classList.remove('active')" style="background:none;border:none;font-size:13px;color:var(--muted2);cursor:pointer;">Fechar</button>
+    <span
+      role="button"
+      tabindex="0"
+      onclick="event.stopPropagation(); document.getElementById('exitOverlay').classList.remove('active')"
+      onkeydown="if(event.key === 'Enter' || event.key === ' ') { event.preventDefault(); event.stopPropagation(); document.getElementById('exitOverlay').classList.remove('active'); }"
+      style="display:inline-block;background:none;border:none;font-size:13px;color:var(--muted2);cursor:pointer;margin-top:4px;"
+    >
+      Fechar
+    </span>
   </div>
 </div>
 
